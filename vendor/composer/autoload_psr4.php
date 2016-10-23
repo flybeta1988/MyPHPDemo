@@ -19,6 +19,7 @@ return array(
     'Symfony\\Bridge\\Doctrine\\' => array($vendorDir . '/symfony/symfony/src/Symfony/Bridge/Doctrine'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
+    'PhpAmqpLib\\' => array($vendorDir . '/php-amqplib/php-amqplib/PhpAmqpLib'),
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib/Doctrine/Common'),
 );
