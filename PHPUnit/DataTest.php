@@ -13,7 +13,7 @@ class DataTest extends PHPUnit_Framework_TestCase
      * @param $b
      * @param $expected
      *
-     * @dataProvider additionProvider2
+     * @dataProvider additionProvider
      */
     public function testAdd($a, $b, $expected) {
         $this->assertEquals($expected, $a + $b);
@@ -24,8 +24,7 @@ class DataTest extends PHPUnit_Framework_TestCase
         return [
             [0, 0, 0],
             [0, 1, 1],
-            [1, 0, 1],
-            [1, 1, 3]
+            [1, 0, 1]
         ];
     }
 
@@ -34,8 +33,7 @@ class DataTest extends PHPUnit_Framework_TestCase
         return [
             'adding zeros'  => [0, 0, 0],
             'zero plus one' => [0, 1, 1],
-            'one plus zero' => [1, 0, 1],
-            'one plus one'  => [1, 1, 3]
+            'one plus zero' => [1, 0, 1]
         ];
     }
 }

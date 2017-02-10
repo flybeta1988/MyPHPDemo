@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="t">
+	<table_structure name="news">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="title" Type="varchar(100)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="created_at" Type="timestamp" Null="YES" Key="" Extra="on update CURRENT_TIMESTAMP" Comment="" />
+		<key Table="news" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="news" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="3" Create_time="2016-07-27 01:21:50" Collation="utf8_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="news">
+	<row>
+		<field name="id">1</field>
+		<field name="title">中文不可以码？</field>
+		<field name="created_at">2016-06-14 09:26:07</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="title">这是 </field>
+		<field name="created_at" xsi:nil="true" />
+	</row>
+		<row>
+		<field name="id">3</field>
+		<field name="title">这是ccc </field>
+		<field name="created_at" xsi:nil="true" />
+	</row>
+	</table_data>
+</database>
+</mysqldump>
