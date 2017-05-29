@@ -1,5 +1,5 @@
 <?php
-
+die('index page');
 require_once __DIR__.'/config/route.config.php';
 
 use Symfony\Component\Routing\RequestContext;
