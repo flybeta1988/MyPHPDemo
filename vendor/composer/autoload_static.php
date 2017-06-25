@@ -68,12 +68,18 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         ),
     );
 
+    public static $classMap = array (
+        'OOP\\Animal' => __DIR__ . '/../..' . '/OOP/Animal.php',
+        'foo' => __DIR__ . '/../..' . '/OOP/index.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a::$classMap;
 
         }, null, ClassLoader::class);
     }

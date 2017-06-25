@@ -1,8 +1,13 @@
 <?php
 
-require_once __DIR__."/../OOP/Animal.php";
+require_once __DIR__."/../vendor/autoload.php";
 
-$animalClass = new ReflectionClass('Animal');
+use OOP\Animal;
+
+$animal = new Animal();
+var_dump($animal);
+
+$animalClass = new ReflectionClass('OOP\Animal');
 //Reflection::export($animalClass);
 
 function getClassData(ReflectionClass $refClass) {

@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'OOP\\Animal' => $baseDir . '/OOP/Animal.php',
+    'foo' => $baseDir . '/OOP/index.php',
 );
