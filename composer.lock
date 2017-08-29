@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a63d17b35fc65454bf5ff26ac4d58f22",
-    "content-hash": "73e3d6617417e2dc67ef33fec90be1f3",
+    "content-hash": "b54a7cfa3efb54945ff620ee327a076b",
     "packages": [
         {
             "name": "elasticsearch/elasticsearch",
@@ -60,7 +59,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2017-04-12 20:40:50"
+            "time": "2017-04-12T20:40:50+00:00"
         },
         {
             "name": "guzzlehttp/ringphp",
@@ -111,7 +110,7 @@
                 }
             ],
             "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-            "time": "2015-05-20 03:37:09"
+            "time": "2015-05-20T03:37:09+00:00"
         },
         {
             "name": "guzzlehttp/streams",
@@ -161,7 +160,7 @@
                 "Guzzle",
                 "stream"
             ],
-            "time": "2014-10-12 19:18:40"
+            "time": "2014-10-12T19:18:40+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -204,7 +203,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2011-10-24 09:39:02"
+            "time": "2011-10-24T09:39:02+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -258,7 +257,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2015-08-11 12:30:09"
+            "time": "2015-08-11T12:30:09+00:00"
         },
         {
             "name": "psr/log",
@@ -305,7 +304,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "react/promise",
@@ -351,7 +350,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2017-03-25 12:08:31"
+            "time": "2017-03-25T12:08:31+00:00"
         }
     ],
     "packages-dev": [],

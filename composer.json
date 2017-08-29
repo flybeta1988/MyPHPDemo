@@ -1,4 +1,7 @@
 {
+	"name": "flybeta1988/my-php-demo",
+	"description": "Flybeta's test project !.",
+
 	"require": {
 		"monolog/monolog": "1.0.*",
 		"php-amqplib/php-amqplib": "2.5.*",
@@ -10,5 +13,11 @@
 			"type": "composer",
 			"url": "https://packagist.phpcomposer.com"
 		}
+	},
+
+	"autoload": {
+		"classmap": [
+			"OOP/"
+		]
 	}
 }
