@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hcf
- * Date: 17-3-1
- * Time: 下午2:07
- */
 
 function cube($n)
 {

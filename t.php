@@ -1,4 +1,40 @@
 <?php
+
+$price = (float)'0.00';
+$r = !$price;
+
+var_dump($r);die();
+
+
+function getValidKeywords($keywords) {
+    $search = array(
+        '，',
+        '。',
+        '.',
+        '?',
+        '？',
+        '!',
+        '！',
+    );
+    return str_replace($search, ',', $keywords);
+}
+
+$keywords = '';
+$r = getValidKeywords($keywords);
+die($r);
+
+$n = '-100';
+$n2 = '-'. $n;
+echo $n2;
+die();
+
+$arr1 = explode(',', "4977,4980,5041,5043,5045,5047,5050,5052,5054,5057,5060,5061,5062,5084,5085,5086,5224,5228,5229,5231,5232");
+$arr2 = explode(',', "5229,5231,5061,5043,5232,5062,4980,5086,5228,5045,4977,5041,5057,5084,5085,5224,5050,5052,5054");
+
+$r = array_diff($arr1, $arr2);
+var_dump($r);die();
+
+
 $point_list = array(
     /*array(
         'type' => 1,
