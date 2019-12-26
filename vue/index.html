@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <div id="app2">
+        <span v-bind:title="message">
+            鼠标悬停几秒钟查看此处动态绑定提示信息！
+        </span>
+    </div>
+
+    <div id="app3">
+        <p v-if="seen">现在你看到我了</p>
+    </div>
+
+    <div id="app4">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+
+    <div id="app5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">点我啊</button>
+    </div>
+
+    <div id="app6">
+        <p>{{ message }}</p>
+        <input v-model="message" />
+    </div>
+
+    <div id="app7">
+        <ol>
+            <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello PHP & Vue ！'
+            }
+        });
+
+        var app2 = new Vue({
+            el: '#app2',
+            data: {
+                message: '页面加载于 ' + new Date().toLocaleDateString()
+            }
+        });
+
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+                seen: true
+            }
+        });
+
+        var app4 = new Vue({
+            el: '#app4',
+            data : {
+                todos: [
+                    { text: '学习js' },
+                    { text: '学习php' },
+                    { text: '学习java' },
+                    { text: '学习c++' }
+                ]
+            }
+        });
+
+        var app5 = new Vue({
+            el: '#app5',
+            data: {
+                message: 'abcdef'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        });
+
+        var app6 = new Vue({
+            el: '#app6',
+            data: {
+                message: 'PHP是最好的编程语言！'
+            }
+        });
+
+        Vue.component('todo-item', {
+            // todo-item 组件现在接受一个
+            // "prop"，类似于一个自定义特性。
+            // 这个 prop 名为 todo。
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        })
+
+        var app7 = new Vue({
+            el: '#app7',
+            data: {
+                groceryList: [
+                    { id: 0, text: '水果'},
+                    { id: 1, text: '面包'},
+                    { id: 3, text: '饮料'},
+                ]
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 <?php
 
+//http://www.laruence.com/2015/05/28/3038.html
+
 function gen() {
     $ret = yield 'yield1';
     var_dump($ret);

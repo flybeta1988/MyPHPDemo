@@ -38,3 +38,9 @@ $dog1->speed = 100;
 $dog1->account->value = 111;
 print_r($dog1);
 print_r($dog2);
+
+function date($str) {
+    echo "this is date: {$str}";
+}
+
+echo date('Y-m-d');
