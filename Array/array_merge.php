@@ -37,3 +37,13 @@ $arr2 = array(
 
 $result = array_merge($arr, $arr2);
 print_r($result);
+die();
+
+$uids = array(
+    [1, 2, 3],
+    [4, 3, 6],
+    [7, 8],
+);
+
+$result = array_merge(...$uids);
+print_r($result);

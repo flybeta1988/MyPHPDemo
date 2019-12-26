@@ -1,11 +1,21 @@
 <?php
 
+$a = 'Hello A !';
 $device_no = 'aaaaaaaaaa112rr';
 $r = preg_match('/^[0-9A-Fa-f]{12}$/', $device_no);
 var_dump($r);
-die();
 
+$ids = '4172,4169,4160,4159,4158,4157,4156,4152,4149,4139,4125,4119,4115,4114,4110,4051,4050,4046,4010,3939';
+$id_list = explode(',', $ids);
 
+$ids2 = '3939,4010,4046,4050,4051,4110,4114,4115,4119,4125,4139,4149,4152';
+$id_list2 = explode(',', $ids2);
+
+$arr = array_diff($id_list, $id_list2);
+print_r($arr);
+echo join(',', $arr);
+echo '<br/>';
+echo $url;
 $class_list = '
 [
         {

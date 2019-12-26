@@ -1,5 +1,165 @@
 <?php
 
+$price = (float)'0.00';
+$r = !$price;
+
+var_dump($r);die();
+
+
+function getValidKeywords($keywords) {
+    $search = array(
+        '，',
+        '。',
+        '.',
+        '?',
+        '？',
+        '!',
+        '！',
+    );
+    return str_replace($search, ',', $keywords);
+}
+
+$keywords = '';
+$r = getValidKeywords($keywords);
+die($r);
+
+$n = '-100';
+$n2 = '-'. $n;
+echo $n2;
+die();
+
+$arr1 = explode(',', "4977,4980,5041,5043,5045,5047,5050,5052,5054,5057,5060,5061,5062,5084,5085,5086,5224,5228,5229,5231,5232");
+$arr2 = explode(',', "5229,5231,5061,5043,5232,5062,4980,5086,5228,5045,4977,5041,5057,5084,5085,5224,5050,5052,5054");
+
+$r = array_diff($arr1, $arr2);
+var_dump($r);die();
+
+
+$point_list = array(
+    /*array(
+        'type' => 1,
+        'second' => 5,
+    ),*/
+    array(
+        'type' => 2,
+        'second' => 7,
+    ),
+    array(
+        'type' => 1,
+        'second' => 20,
+    ),
+    array(
+        'type' => 2,
+        'second' => 27,
+    ),
+    array(
+        'type' => 1,
+        'second' => 35,
+    ),
+    /*array(
+        'type' => 2,
+        'second' => 40,
+    ),*/
+);
+
+function getPeriodList($point_list) {
+
+    if (isset($point_list[0]['type']) && (1 != $point_list[0]['type'])) {
+        array_unshift($point_list, array(
+            'type' => 1,
+            'second' => 0,
+        ));
+    }
+
+    $last_key = count($point_list) - 1;
+    if (isset($point_list[$last_key]['type']) && (2 != $point_list[$last_key]['type'])) {
+        array_push($point_list, array(
+            'type' => 2,
+            'second' => $point_list[$last_key-1]['second'] + 100,
+        ));
+    }
+
+    $segment_list = [];
+    $period_list = array_chunk($point_list, 2);
+    foreach ($period_list as $key => $period) {
+        foreach ($period as $k => $p) {
+            if (1 == $p['type']) {
+                $segment_list[$key]['begin_second'] = $p['second'];
+            } else if (2 == $p['type']) {
+                $segment_list[$key]['end_second'] = $p['second'];
+            }
+        }
+    }
+
+    return $segment_list;
+}
+
+$result = getPeriodList($point_list);
+print_r($result);die();
+
+function getPeriodListV2($point_list) {
+    $period_list = [];
+    $period_count = ceil(count($point_list)/2);
+    for ($i = 0; $i < $period_count; $i ++) {
+        $period_list[] = array(
+            'start_time' => 1,
+            'end_time' => 1,
+        );
+    }
+
+    $is_normal = false;
+    foreach ($point_list as $key => $point) {
+
+        $period_list = [];
+        if ((0 === $key)) {
+            $is_normal = (1 == $point['type']);
+        }
+
+        if ($is_normal) {
+            $period_key = floor($key/2);
+            $period_list[$period_key]['start_time'] = $point['second'];
+        } else {
+            $period_key = ceil($key/2);
+            $period_list[$period_key]['start_time'] = 0;
+            $period_list[$period_key]['end_time'] = $point['second'];
+        }
+
+        echo "key:{$key} period_key is:". $period_key. "\n";
+
+    }
+}
+
+die();
+
+$str = '3.1455';
+$r = round(floor($str * 100)/100, 2);
+//$r = substr($str, -2, 2);
+//var_dump($r);die();
+
+$org_class_list = array(
+    array(
+        'id' => 1,
+        'price' => 0.01,
+    ),
+    array(
+        'id' => 2,
+        'price' => 0.01,
+    )
+);
+
+$pay_money_dict = [];
+foreach ($org_class_list as $org_class) {
+    //$pay_money_dict[$org_class['id']] = max(0, round(($org_class['price'] * 5.5)/10, 2, PHP_ROUND_HALF_DOWN));
+    //$pay_money_dict[$org_class['id']] = max(0, round(floor(($org_class['price'] * 8/10) * 100)/100, 5));
+    $pay_money_dict[$org_class['id']] = max(0, round($org_class['price'] * 8/10, 3));
+}
+
+print_r($pay_money_dict);
+$total_pay_money = floor(array_sum($pay_money_dict)*100)/100;
+
+var_dump($total_pay_money);
+die();
+
 $course_id_str = '1383,1384,1393,1395,1396,1397,1399,1400,1401,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1412,1413,1414,1415,1416,1417,1418,1419,1420,1421,1422,1423,1424,1425,1426,1427,1428,1429,1430,1431,1432,1433,1435,1436,1437,1438,1439,1440,1441,1442,1443,1444,1445,1446,1447,1448,1449,1450,1451,1452,1453,1454,1455,1456,1457,1458,1459,1460,1461,1462,1463,1464,1465,1466,1467,1468,1469,1470,1471,1472,1473,1474,1475,1477,1478,1479,1480,1481,1482,1483,1484,1485,1486,1487,1488,1489,1490,1491,1492,1493,1494,1495,1496,1497,1498,1499,1500,1501,1502,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1516,1517,1518,1519,1520,1521,1522,1523,1524,1525,1526,1527,1528,1529,1530,1531,1532,1533,1534,1536,1539,1540,1541,1542,1543,1544,1546,1547,1548,1549,1552,1553,1554,1555,1557,1586,1587,1588,1590,1596,1597,1613,1621,1622,1623,1624,1625,1626,1628,1632,1634,1643,1648,1655,1656,1657,1658,1673,1674,1678,1679,1693,1694,1695,1696,1697,1699,1700,1701,1702,1703,1704,1883,1884,1886,1887,1888,1889,1891,1892,1893,1896,1897,1900';
 
 $course_id_str = '2753,2754,2755,2758,2759,2760,2761,2764,2766,2769,2770,2771,2772,2774,2776,2777,2778,2779,2780,2781,2782,2783,2784,2785,2786,2787,2788,2789,2790,2791,2792,2793,2795,2796,2797,2798,2799,2800,2801,2802,2803,2804,2806,2807,2808,2809,2810,2811,2812,2813,2814,2815,2816,2817,2818,2819,2820,2821,2822,2823,2824,2825,2826,2827,2828,2829,2830,2831,2832,2833,2834,2835,2836,2837,2838,2839,2840,2841,2842,2843,2844,2845,2846,2847,2848,2849,2850,2851,2852,2853,2854,2855,2856,2857,2858,2859,2861,2864,2866,2869,2871,2872,2874,2875,2876,2877,2878,2879,2880,2881,2882,2883,2884,2885,2886,2887,2888,2889,2890,2891,2892,2893,2894,2895,2896,2897,2898,2899,2900,2901,2902,2903,2904,2905,2906,2907,2908,2909,2910,2911,2912,2913,2914,2915,2916,2917,2918,2919,2920,2921,2924,2926,2928,2929,2930,2931,2932,2933,2934,2935,2936,2937,2938,2939,2940,2941,2942,2943,2944,2945,2946,2947,2948,2949,2950,2951,2952,2953,2954,2955,2956,2957,2958,2959,2960,2961,2962,2963,2964,2965,2966,2967,2968,2969,2970,2971,2972,2973,2974,2975,2976,2977,2978,2979,2980';
