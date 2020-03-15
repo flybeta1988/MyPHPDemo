@@ -1,5 +1,6 @@
 <?php
 
+
 $device_no = 'aaaaaaaaaa112rr';
 $r = preg_match('/^[0-9A-Fa-f]{12}$/', $device_no);
 var_dump($r);
