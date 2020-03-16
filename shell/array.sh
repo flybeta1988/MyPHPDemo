@@ -5,10 +5,10 @@ user_list=(
     'tom'
     'tianhuan'
 )
-echo ${user_list[1]}
-echo ${user_list[@]}
+#echo ${user_list[1]}
+#echo ${user_list[@]}
 
-for user in $user_list; do
+for user in ${user_list[*]}; do
     echo $user
 done
 
