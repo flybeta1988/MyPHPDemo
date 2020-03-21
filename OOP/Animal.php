@@ -1,6 +1,7 @@
 <?php
 namespace OOP;
 
+include_once __DIR__. "/../Util/Util.php";
 require_once __DIR__. "/Account.php";
 
 class Animal
@@ -43,4 +44,7 @@ function date($str) {
     echo "this is date: {$str}";
 }
 
-echo date('Y-m-d');
+$a = new Animal();
+//$a->speed = 100;
+$r = \Util::getElement($a, 'c');
+var_dump($r);
