@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <p v-html>Using mustaches: {{ rawHtml }}</p>
+    <p id="app2">Using v-html directive: <span v-html="rawHtml"></span></p>
+
+    <script type="text/javascript">
+
+        var data = {
+            message: "hello vue!",
+            rawHtml: "<span style='color: #ff0000'>This should be red!</span>",
+        };
+
+        var vm = new Vue({
+            el: "#app2",
+            data: data
+        });
+
+    </script>
+</body>
+</html>
