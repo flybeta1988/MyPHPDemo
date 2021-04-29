@@ -72,7 +72,8 @@ class Count extends AbstractEndpoint
             'lowercase_expanded_terms',
             'analyze_wildcard',
             'lenient',
-            'lowercase_expanded_terms'
+            'lowercase_expanded_terms',
+            'terminate_after'
         );
     }
 
@@ -81,6 +82,6 @@ class Count extends AbstractEndpoint
      */
     public function getMethod()
     {
-        return 'GET';
+        return isset($this->body) ? 'POST' : 'GET';
     }
 }

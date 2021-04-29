@@ -9,12 +9,14 @@ use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Elasticsearch\Common\Exceptions\TransportException;
 use Elasticsearch\Endpoints\AbstractEndpoint;
+use Elasticsearch\Namespaces\AbstractNamespace;
 use Elasticsearch\Namespaces\CatNamespace;
 use Elasticsearch\Namespaces\ClusterNamespace;
 use Elasticsearch\Namespaces\IndicesNamespace;
 use Elasticsearch\Namespaces\IngestNamespace;
 use Elasticsearch\Namespaces\NamespaceBuilderInterface;
 use Elasticsearch\Namespaces\NodesNamespace;
+use Elasticsearch\Namespaces\RemoteNamespace;
 use Elasticsearch\Namespaces\SnapshotNamespace;
 use Elasticsearch\Namespaces\BooleanRequestWrapper;
 use Elasticsearch\Namespaces\TasksNamespace;
@@ -30,6 +32,8 @@ use Elasticsearch\Namespaces\TasksNamespace;
  */
 class Client
 {
+    const VERSION = '5.5.0';
+
     /**
      * @var Transport
      */
@@ -75,6 +79,11 @@ class Client
      */
     protected $tasks;
 
+    /**
+     * @var RemoteNamespace
+     */
+    protected $remote;
+
     /** @var  callback */
     protected $endpoints;
 
@@ -99,6 +108,7 @@ class Client
         $this->cat       = new CatNamespace($transport, $endpoint);
         $this->ingest    = new IngestNamespace($transport, $endpoint);
         $this->tasks     = new TasksNamespace($transport, $endpoint);
+        $this->remote    = new RemoteNamespace($transport, $endpoint);
         $this->registeredNamespaces = $registeredNamespaces;
     }
 
@@ -633,6 +643,36 @@ class Client
         $endpoint->setIndex($index)
                  ->setType($type)
                  ->setBody($body);
+        $endpoint->setParams($params);
+
+        return $this->performRequest($endpoint);
+    }
+
+    /**
+     * $params['index']       = (list) A comma-separated list of index names to use as default
+     *        ['type']        = (list) A comma-separated list of document types to use as default
+     *        ['search_type'] = (enum) Search operation type
+     *        ['body']        = (array|string) The request definitions (metadata-search request definition pairs), separated by newlines
+     *        ['max_concurrent_searches'] = (number) Controls the maximum number of concurrent searches the multi search api will execute
+     *
+     * @param $params array Associative array of parameters
+     *
+     * @return array
+     */
+    public function msearchTemplate($params = array())
+    {
+        $index = $this->extractArgument($params, 'index');
+        $type = $this->extractArgument($params, 'type');
+        $body = $this->extractArgument($params, 'body');
+
+        /** @var callback $endpointBuilder */
+        $endpointBuilder = $this->endpoints;
+
+        /** @var \Elasticsearch\Endpoints\MsearchTemplate $endpoint */
+        $endpoint = $endpointBuilder('MsearchTemplate');
+        $endpoint->setIndex($index)
+            ->setType($type)
+            ->setBody($body);
         $endpoint->setParams($params);
 
         return $this->performRequest($endpoint);
@@ -1337,6 +1377,33 @@ class Client
     }
 
     /**
+     * $params['index']              = (list) A comma-separated list of indices to restrict the results
+     *        ['ignore_unavailable'] = (bool) Whether specified concrete indices should be ignored when unavailable (missing or closed)
+     *        ['allow_no_indices']   = (bool) Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)
+     *        ['expand_wildcards']   = (enum) Whether to expand wildcard expression to concrete indices that are open, closed or both.
+     *
+     * @param $params array Associative array of parameters
+     *
+     * @return array
+     */
+    public function fieldCaps($params = array())
+    {
+        $index = $this->extractArgument($params, 'index');
+        $body = $this->extractArgument($params, 'body');
+
+        /** @var callback $endpointBuilder */
+        $endpointBuilder = $this->endpoints;
+
+        /** @var \Elasticsearch\Endpoints\FieldCaps $endpoint */
+        $endpoint = $endpointBuilder('FieldCaps');
+        $endpoint->setIndex($index)
+            ->setBody($body)
+            ->setParams($params);
+
+        return $this->performRequest($endpoint);
+    }
+
+    /**
      * $params['id']                 = (string) ID of the template to render
      *
      * @param $params array Associative array of parameters
@@ -1431,6 +1498,16 @@ class Client
     }
 
     /**
+     * Operate on the Remote namespace of commands
+     *
+     * @return RemoteNamespace
+     */
+    public function remote()
+    {
+        return $this->remote;
+    }
+
+    /**
      * Catchall for registered namespaces
      *
      * @param $name
@@ -1489,7 +1566,7 @@ class Client
 
     /**
      * @param $endpoint AbstractEndpoint
-     * 
+     *
      * @throws \Exception
      * @return array
      */

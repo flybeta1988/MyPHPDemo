@@ -79,6 +79,7 @@ class Search extends AbstractEndpoint
             'scroll',
             'search_type',
             'size',
+            'slice',
             'sort',
             'source',
             '_source',
@@ -106,6 +107,6 @@ class Search extends AbstractEndpoint
      */
     public function getMethod()
     {
-        return 'GET';
+        return isset($this->body) ? 'POST' : 'GET';
     }
 }

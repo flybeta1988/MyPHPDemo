@@ -2,6 +2,7 @@
 
 namespace Elasticsearch\Connections;
 
+use Elasticsearch\Client;
 use Elasticsearch\Common\Exceptions\AlreadyExpiredException;
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Elasticsearch\Common\Exceptions\Conflict409Exception;
@@ -120,6 +121,15 @@ class Connection implements ConnectionInterface
             unset($connectionParams['client']['headers']);
         }
 
+        // Add the User-Agent using the format: <client-repo-name>/<client-version> (metadata-values)
+        $this->headers['User-Agent'] = [sprintf(
+            "elasticsearch-php/%s (%s %s, PHP %s)",
+            Client::VERSION,
+            php_uname("s"),
+            php_uname("r"),
+            phpversion()
+        )];
+
         $host = $hostDetails['host'].':'.$hostDetails['port'];
         $path = null;
         if (isset($hostDetails['path']) === true) {
@@ -133,6 +143,16 @@ class Connection implements ConnectionInterface
         $this->serializer       = $serializer;
 
         $this->handler = $this->wrapHandler($handler, $log, $trace);
+    }
+
+    /**
+     * Get the HTTP headers
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
     }
 
     /**
@@ -156,11 +176,11 @@ class Connection implements ConnectionInterface
             'uri'         => $this->getURI($uri, $params),
             'body'        => $body,
             'headers'     => array_merge([
-                'host'  => [$this->host]
+                'Host'  => [$this->host]
             ], $this->headers)
         ];
 
-        $request = array_merge_recursive($request, $this->connectionParams, $options);
+        $request = array_replace_recursive($request, $this->connectionParams, $options);
 
         // RingPHP does not like if client is empty
         if (empty($request['client'])) {
@@ -456,7 +476,7 @@ class Connection implements ConnectionInterface
             ]
         ];
 
-        return $this->performRequest('GET', '/_nodes/_all/clear', null, null, $options);
+        return $this->performRequest('GET', '/_nodes/', null, null, $options);
     }
 
     /**

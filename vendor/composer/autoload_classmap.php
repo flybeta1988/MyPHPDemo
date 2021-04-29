@@ -6,6 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Account' => $baseDir . '/OOP/Account.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'OOP\\Animal' => $baseDir . '/OOP/Animal.php',
+    'OrgCourseMiddle' => $baseDir . '/OOP/OrgCourseMiddle.php',
+    'Owner' => $baseDir . '/OOP/Owner.php',
     'foo' => $baseDir . '/OOP/index.php',
 );

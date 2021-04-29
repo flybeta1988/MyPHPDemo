@@ -69,7 +69,11 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
     );
 
     public static $classMap = array (
+        'Account' => __DIR__ . '/../..' . '/OOP/Account.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'OOP\\Animal' => __DIR__ . '/../..' . '/OOP/Animal.php',
+        'OrgCourseMiddle' => __DIR__ . '/../..' . '/OOP/OrgCourseMiddle.php',
+        'Owner' => __DIR__ . '/../..' . '/OOP/Owner.php',
         'foo' => __DIR__ . '/../..' . '/OOP/index.php',
     );
 
