@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '049c42aea1d9639785523be3129879b1b9982624',
+    'reference' => 'ef56b36da42c8a5b0688b19ca14e868b8c07a8b5',
     'name' => 'flybeta1988/my-php-demo',
   ),
   'versions' => 
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '049c42aea1d9639785523be3129879b1b9982624',
+      'reference' => 'ef56b36da42c8a5b0688b19ca14e868b8c07a8b5',
     ),
     'guzzlehttp/ringphp' => 
     array (
@@ -67,12 +67,12 @@
     ),
     'psr/log' => 
     array (
-      'pretty_version' => '1.1.3',
-      'version' => '1.1.3.0',
+      'pretty_version' => '1.1.4',
+      'version' => '1.1.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0f73288fd15629204f9d42b7055f72dacbe811fc',
+      'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
     ),
     'react/promise' => 
     array (
@@ -82,6 +82,15 @@
       array (
       ),
       'reference' => 'f3cff96a19736714524ca0dd1d4130de73dbbbc4',
+    ),
+    'swoole/ide-helper' => 
+    array (
+      'pretty_version' => '4.4.25',
+      'version' => '4.4.25.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '447bc776f3467031979675de9ff18cca4e666869',
     ),
   ),
 );
