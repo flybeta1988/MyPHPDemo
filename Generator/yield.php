@@ -6,7 +6,8 @@ function foo1() {
 }
 
 $foo1 = foo1();
-var_dump($foo1->send('Hello yield'));die();
+var_dump($foo1->send('Hello yield'));
+die();
 
 
 function foo2() {

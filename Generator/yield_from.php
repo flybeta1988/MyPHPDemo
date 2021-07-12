@@ -25,6 +25,8 @@ function nine_ten() {
 
 $gen = count_to_ten();
 foreach ($gen as $num) {
-    echo "$num ";
+    var_dump($num);
+    echo "====";
+    //echo "$num ";
 }
 echo $gen->getReturn();

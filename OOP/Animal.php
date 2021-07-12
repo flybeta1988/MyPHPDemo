@@ -28,23 +28,3 @@ class Animal
         echo "I can run {$this->speed} km/h";
     }
 }
-
-$account = new \Account();
-$dog1 = new Animal($account);
-
-//$dog2 = $dog1;
-$dog2 = clone $dog1;
-
-$dog1->speed = 100;
-$dog1->account->value = 111;
-print_r($dog1);
-print_r($dog2);
-
-function date($str) {
-    echo "this is date: {$str}";
-}
-
-$a = new Animal();
-//$a->speed = 100;
-$r = \Util::getElement($a, 'c');
-var_dump($r);
