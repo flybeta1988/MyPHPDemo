@@ -6,7 +6,8 @@
 		"monolog/monolog": "1.0.*",
 		"php-amqplib/php-amqplib": "2.5.*",
 		"elasticsearch/elasticsearch": "~5.0",
-		"swoole/ide-helper": "~4.4.7"
+		"swoole/ide-helper": "~4.4.7",
+		"jsonrpc/jsonrpc": "1.0.*"
 	},
 
 	"repositories": {

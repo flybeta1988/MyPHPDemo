@@ -12,21 +12,23 @@ function count_to_ten() {
 function seven_eight() {
     yield 7;
     yield from eight();
+    return "777";
 }
 
 function eight() {
     yield 8;
+    return "8888";
 }
 
 function nine_ten() {
     yield 9;
-    return 10;
+    return "I am return result";
 }
 
 $gen = count_to_ten();
 foreach ($gen as $num) {
     var_dump($num);
-    echo "====";
+    echo "====\n";
     //echo "$num ";
 }
 echo $gen->getReturn();
