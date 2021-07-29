@@ -66,6 +66,13 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
                 0 => __DIR__ . '/..' . '/monolog/monolog/src',
             ),
         ),
+        'J' => 
+        array (
+            'JsonRpc' => 
+            array (
+                0 => __DIR__ . '/..' . '/jsonrpc/jsonrpc/src',
+            ),
+        ),
     );
 
     public static $classMap = array (

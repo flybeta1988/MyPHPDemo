@@ -26,7 +26,7 @@ run(function () {
         //echo round(memory_get_usage() / 1024 / 1024, 2) . ' MB' . PHP_EOL;
 
         $courseService = new CourseService();
-        $course_list = $courseService->getCourseListByBarrier();
+        $course_list = $courseService->getCourseListV3();
 
         echo date('Y-m-d H:i:s'). " last result:". json_encode($course_list). "\n";
         $response->header('Content-Type', 'text/html; charset=utf-8');

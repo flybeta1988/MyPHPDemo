@@ -3,7 +3,7 @@ use Swoole\Coroutine;
 use Swoole\Coroutine\Channel;
 use function Swoole\Coroutine\run;
 
-Co::set(['hook_flags'=> SWOOLE_HOOK_ALL]);
+//Co::set(['hook_flags'=> SWOOLE_HOOK_ALL]);
 
 function printLogWithTime($msg) {
     echo microtime(true). " ". $msg. "\n";
@@ -42,7 +42,8 @@ run(function() {
             if ($data) {
                 printLogWithTime("end pop 取到数据:". $data);
                 //echo $data . "\n";
-                Co::sleep(2);
+                //Co::sleep(2);
+                Coroutine::sleep(2);
             } else {
                 printLogWithTime("end pop because no data break 取数据时间");
                 break;
