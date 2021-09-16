@@ -6,20 +6,24 @@
  */
 class ArrayAccessTest2 {
 
-    private $attributes;
+    public $attributes;
+
+    protected $address;
 
     public function __construct() {
         $this->attributes = array(
             'id' => 100,
             'name' => "测试课程",
         );
+        $this->address = 'Beijing';
     }
 
     public function __get($key) {
         echo "aa\n";
+        return $this->address;
         return $this->attributes[$key];
     }
 }
 
 $aat = new ArrayAccessTest2();
-var_dump($aat->name);
+var_dump($aat->address);

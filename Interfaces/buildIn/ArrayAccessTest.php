@@ -4,11 +4,14 @@
  * 提供像访问数组一样访问对象的能力的接口
  * Class ArrayAccessTest
  */
-class ArrayAccessTest implements ArrayAccess
+class ArrayAccessTest
 {
     private $attributes;
 
+    public $address;
+
     public function __construct() {
+        $this->address = 'ShangHai';
         $this->attributes = array(
             'id' => 100,
             'name' => "测试课程",
@@ -17,9 +20,11 @@ class ArrayAccessTest implements ArrayAccess
 
     private function setAttribute($key, $value) {
         $this->attributes[$key] = $value;
+        $this->$key = $value;
     }
 
     private function getAttribute($key) {
+        return $this->$key;
         return $this->attributes[$key];
     }
 
@@ -70,4 +75,6 @@ class ArrayAccessTest implements ArrayAccess
 }
 
 $aat = new ArrayAccessTest();
-var_dump($aat['name']);
+foreach ($aat as $key => $a) {
+    var_dump($key, $a);
+}

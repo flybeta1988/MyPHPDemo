@@ -144,6 +144,7 @@ class CourseService
             while (1) {
                 echo "\n";
                 echo date('Y-m-d H:i:s'). " pop start...\n";
+
                 $data = $channel->pop();
                 if ($data) {
                     $course_list[] = $data;
@@ -152,6 +153,7 @@ class CourseService
                     echo date('Y-m-d H:i:s'). " pop channel empty!\n";
                     break;
                 }
+                print_r($course_list);
             }
         });
 

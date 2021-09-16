@@ -11,5 +11,6 @@ return array(
     'PhpAmqpLib\\' => array($vendorDir . '/php-amqplib/php-amqplib/PhpAmqpLib'),
     'GuzzleHttp\\Stream\\' => array($vendorDir . '/guzzlehttp/streams/src'),
     'GuzzleHttp\\Ring\\' => array($vendorDir . '/guzzlehttp/ringphp/src'),
+    'Grpc\\' => array($vendorDir . '/grpc/grpc/src/lib'),
     'Elasticsearch\\' => array($vendorDir . '/elasticsearch/elasticsearch/src/Elasticsearch'),
 );

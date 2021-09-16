@@ -13,6 +13,7 @@ function getLines($file) {
 }
 
 $lines = getLines("chars.txt");
+var_dump($lines);
 
 foreach ($lines as $n => $line) {
     echo $n. ':'. $line;

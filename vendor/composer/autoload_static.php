@@ -24,6 +24,7 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         array (
             'GuzzleHttp\\Stream\\' => 18,
             'GuzzleHttp\\Ring\\' => 16,
+            'Grpc\\' => 5,
         ),
         'E' => 
         array (
@@ -51,6 +52,10 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         'GuzzleHttp\\Ring\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/ringphp/src',
+        ),
+        'Grpc\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/grpc/grpc/src/lib',
         ),
         'Elasticsearch\\' => 
         array (

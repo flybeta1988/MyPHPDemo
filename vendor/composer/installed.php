@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'd83e922531957aeaa523914d3149bbe25c20ffe1',
+    'reference' => '6968115af14b6adb4a6e826a6bbaaf25cf23b053',
     'name' => 'flybeta1988/my-php-demo',
   ),
   'versions' => 
@@ -27,7 +27,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'd83e922531957aeaa523914d3149bbe25c20ffe1',
+      'reference' => '6968115af14b6adb4a6e826a6bbaaf25cf23b053',
+    ),
+    'grpc/grpc' => 
+    array (
+      'pretty_version' => '1.30.0',
+      'version' => '1.30.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '31952d18884d91c674b73f8b4da831f708706f20',
     ),
     'guzzlehttp/ringphp' => 
     array (
