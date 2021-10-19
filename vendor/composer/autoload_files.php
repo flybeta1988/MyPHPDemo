@@ -7,4 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ad155f8f1cf0d418fe49e248db8c661b' => $vendorDir . '/react/promise/src/functions_include.php',
+    '870c221a18597bfcd5ed576d0fb64a19' => $vendorDir . '/opentracing/opentracing/src/OpenTracing/Tags.php',
+    'd25d883add1ecab0d3a9ffec57f0f183' => $vendorDir . '/opentracing/opentracing/src/OpenTracing/Formats.php',
+    '700dcaa359912479db3776dd849a600b' => $vendorDir . '/jukylin/jaeger-php/src/Jaeger/Constants.php',
 );

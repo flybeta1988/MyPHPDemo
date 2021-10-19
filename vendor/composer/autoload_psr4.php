@@ -9,6 +9,8 @@ return array(
     'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'PhpAmqpLib\\' => array($vendorDir . '/php-amqplib/php-amqplib/PhpAmqpLib'),
+    'OpenTracing\\' => array($vendorDir . '/opentracing/opentracing/src/OpenTracing'),
+    'Jaeger\\' => array($vendorDir . '/jukylin/jaeger-php/src/Jaeger'),
     'GuzzleHttp\\Stream\\' => array($vendorDir . '/guzzlehttp/streams/src'),
     'GuzzleHttp\\Ring\\' => array($vendorDir . '/guzzlehttp/ringphp/src'),
     'Grpc\\' => array($vendorDir . '/grpc/grpc/src/lib'),

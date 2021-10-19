@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '6968115af14b6adb4a6e826a6bbaaf25cf23b053',
+    'reference' => '1706e045db53b4b7294a8e75e9a3c2cc9a7c2d36',
     'name' => 'flybeta1988/my-php-demo',
   ),
   'versions' => 
@@ -51,7 +51,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '6968115af14b6adb4a6e826a6bbaaf25cf23b053',
+      'reference' => '1706e045db53b4b7294a8e75e9a3c2cc9a7c2d36',
     ),
     'grpc/grpc' => 
     array (
@@ -89,6 +89,16 @@ private static $installed = array (
       ),
       'reference' => '0fcc660ca211a871fe656066e8921406a4c3a2ae',
     ),
+    'jukylin/jaeger-php' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '9999999-dev',
+      ),
+      'reference' => 'f58a6f4a356902e7d70c0f4bad35862babcb33af',
+    ),
     'monolog/monolog' => 
     array (
       'pretty_version' => '1.0.2',
@@ -97,6 +107,24 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b704c49a3051536f67f2d39f13568f74615b9922',
+    ),
+    'opentracing/opentracing' => 
+    array (
+      'pretty_version' => '1.0.0-beta5',
+      'version' => '1.0.0.0-beta5',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '19591d4084e32eaea061eebd9448b62e5ee3ec19',
+    ),
+    'packaged/thrift' => 
+    array (
+      'pretty_version' => '0.10.0',
+      'version' => '0.10.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8af3f4c0388319f65a2522844d80d8ded60d211b',
     ),
     'php-amqplib/php-amqplib' => 
     array (

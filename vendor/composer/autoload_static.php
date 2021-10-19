@@ -8,6 +8,9 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
 {
     public static $files = array (
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
+        '870c221a18597bfcd5ed576d0fb64a19' => __DIR__ . '/..' . '/opentracing/opentracing/src/OpenTracing/Tags.php',
+        'd25d883add1ecab0d3a9ffec57f0f183' => __DIR__ . '/..' . '/opentracing/opentracing/src/OpenTracing/Formats.php',
+        '700dcaa359912479db3776dd849a600b' => __DIR__ . '/..' . '/jukylin/jaeger-php/src/Jaeger/Constants.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -19,6 +22,14 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         array (
             'Psr\\Log\\' => 8,
             'PhpAmqpLib\\' => 11,
+        ),
+        'O' => 
+        array (
+            'OpenTracing\\' => 12,
+        ),
+        'J' => 
+        array (
+            'Jaeger\\' => 7,
         ),
         'G' => 
         array (
@@ -45,6 +56,14 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         array (
             0 => __DIR__ . '/..' . '/php-amqplib/php-amqplib/PhpAmqpLib',
         ),
+        'OpenTracing\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/opentracing/opentracing/src/OpenTracing',
+        ),
+        'Jaeger\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jukylin/jaeger-php/src/Jaeger',
+        ),
         'GuzzleHttp\\Stream\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/streams/src',
@@ -64,6 +83,13 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
     );
 
     public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Thrift\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/packaged/thrift/src',
+            ),
+        ),
         'M' => 
         array (
             'Monolog' => 
@@ -86,6 +112,8 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         'OOP\\Animal' => __DIR__ . '/../..' . '/OOP/Animal.php',
         'OrgCourseMiddle' => __DIR__ . '/../..' . '/OOP/OrgCourseMiddle.php',
         'Owner' => __DIR__ . '/../..' . '/OOP/Owner.php',
+        'TimeCollector' => __DIR__ . '/../..' . '/OOP/index.php',
+        'TimeLogger' => __DIR__ . '/../..' . '/OOP/index.php',
         'foo' => __DIR__ . '/../..' . '/OOP/index.php',
     );
 

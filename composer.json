@@ -8,7 +8,8 @@
 		"elasticsearch/elasticsearch": "~5.0",
 		"swoole/ide-helper": "~4.4.7",
 		"jsonrpc/jsonrpc": "1.0.*",
-		"grpc/grpc": "~1.30.0"
+		"grpc/grpc": "~1.30.0",
+		"jukylin/jaeger-php": "dev-master"
 	},
 
 	"repositories": {
@@ -22,5 +23,6 @@
 		"classmap": [
 			"OOP/"
 		]
-	}
+	},
+	"minimum-stability": "dev"
 }

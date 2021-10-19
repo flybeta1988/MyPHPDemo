@@ -11,5 +11,7 @@ return array(
     'OOP\\Animal' => $baseDir . '/OOP/Animal.php',
     'OrgCourseMiddle' => $baseDir . '/OOP/OrgCourseMiddle.php',
     'Owner' => $baseDir . '/OOP/Owner.php',
+    'TimeCollector' => $baseDir . '/OOP/index.php',
+    'TimeLogger' => $baseDir . '/OOP/index.php',
     'foo' => $baseDir . '/OOP/index.php',
 );
