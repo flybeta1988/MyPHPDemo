@@ -10,7 +10,7 @@ class Animal
 
     protected $heigh;
 
-    public $speed;
+    public $speed = 100;
 
     public $account;
 
