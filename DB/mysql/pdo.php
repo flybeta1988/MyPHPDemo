@@ -1,6 +1,6 @@
 <?php
 try {
-    $db = new PDO('mysql:host=localhost;port=3306;dbname=xnw', 'root', 'root');
+    $db = new PDO('mysql:host=127.0.0.1;port=6306;dbname=xnw', 'root', 'root');
 } catch (Exception $e) {
     die("mysql连接失败");
 }
