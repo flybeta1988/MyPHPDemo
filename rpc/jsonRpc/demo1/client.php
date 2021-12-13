@@ -3,7 +3,7 @@ require_once 'JsonRPCClient.php';
 
 $url = 'http://demo.t.me:8081/rpc/jsonRpc/demo1/server.php';
 
-$myExample = new JsonRPCClient($url);
+$myExample = new JsonRPCClient($url, 1);
 
 // 客户端调用
 try {
