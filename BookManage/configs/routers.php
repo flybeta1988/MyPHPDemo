@@ -1,4 +1,6 @@
 <?php
 return array(
-    "/" => "HomeController@index"
+    "/" => "HomeController@index",
+    "/book/list" => "BookController@index",
+    "/book/detail" => "BookController@detail"
 );

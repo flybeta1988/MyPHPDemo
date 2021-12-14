@@ -1,0 +1,12 @@
+{
+    "require": {
+        "smarty/smarty": "4.0.0"
+    },
+    "autoload": {},
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    }
+}

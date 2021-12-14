@@ -20,7 +20,7 @@ class ReflectionUtil {
 
 require_once __DIR__."/../OOP/Animal.php";
 
-$animalClass = new ReflectionClass('Animal');
+$animalClass = new ReflectionClass('OOP\Animal');
 
 $result = ReflectionUtil::getClassSource($animalClass);
 
