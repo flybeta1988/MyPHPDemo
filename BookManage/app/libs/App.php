@@ -1,4 +1,5 @@
 <?php
+namespace App\Libs;
 
 class App
 {
@@ -27,10 +28,14 @@ class App
 
         list($controller, $action) = explode('@', $action_str);
 
-        $func = new ReflectionMethod($controller, $action);
+        $func = new \ReflectionMethod('App\Controllers\\'.$controller, $action);
         $class = new $func->class($this->request);
         $method = $func->name;
 
+        $this->callAction($class, $method, [$this->request]);
+    }
+
+    private function callAction($class, $method, $params=[]) {
         //方法1
         //$class->$method($this->request);
 
@@ -41,7 +46,12 @@ class App
         //(new $controller())->$action($this->request);
 
         //方法4
-        call_user_func([$class, $method], ...[$this->request]);
+        try {
+            call_user_func([$class, $method], ...$params);
+        } catch (\Exception $e) {
+            $msg = $e->getMessage();
+            Util::redirect("/500.php?msg={$msg}");
+        }
     }
 
     private function loadRoutes() {
