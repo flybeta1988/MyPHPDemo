@@ -1,6 +1,8 @@
 <?php
 namespace App\Libs;
 
+use App\Exceptions\ActionException;
+
 class App
 {
     private $route;
@@ -12,7 +14,13 @@ class App
         $this->request = Request::getInstance();
 
         $request_uri = $_SERVER['REQUEST_URI'] ?? '';
-        $this->route = $request_uri ? substr($request_uri, 0, strpos($request_uri, '?')) : '';
+        Log::info("uri:". $request_uri);
+
+        if (false !== strpos($request_uri, '?')) {
+            $request_uri = substr($request_uri, 0, strpos($request_uri, '?'));
+        }
+
+        $this->route = $request_uri;
     }
 
     public function start() {
@@ -23,8 +31,10 @@ class App
         $routes = $this->loadRoutes();
         $action_str = $routes[$this->route] ?? '';
         if (!$action_str) {
-            Util::redirect("/404.php");
+            //Util::redirect("/404.php");
         }
+
+        Log::info(__METHOD__. " action_str:". $action_str);
 
         list($controller, $action) = explode('@', $action_str);
 
@@ -48,9 +58,11 @@ class App
         //方法4
         try {
             call_user_func([$class, $method], ...$params);
+        } catch(ActionException $e) {
+            Log::error("[{$e->getCode()}] ". $e->getMessage()." Trace:". $e->getTraceAsString());
         } catch (\Exception $e) {
-            $msg = $e->getMessage();
-            Util::redirect("/500.php?msg={$msg}");
+            Log::error("[{$e->getCode()}] ". $e->getMessage()." Trace:". $e->getTraceAsString());
+            Util::redirect("/500.php");
         }
     }
 

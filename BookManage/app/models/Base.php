@@ -59,7 +59,7 @@ class Base
     }
 
     public static function getList() {
-        return DB::getRow(
+        return DB::getRows(
             sprintf("SELECT * FROM `%s` WHERE id > 0", self::getTableName())
         );
     }

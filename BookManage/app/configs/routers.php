@@ -1,6 +1,9 @@
 <?php
 return array(
     "/" => "HomeController@index",
-    "/book/list" => "BookController@index",
+    "/login" => "HomeController@login",
+    "/logout" => "HomeController@logout",
+    "/welcome" => "HomeController@welcome",
+    "/book/index" => "BookController@index",
     "/book/detail" => "BookController@detail"
 );

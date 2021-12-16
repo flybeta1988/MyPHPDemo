@@ -8,10 +8,8 @@ class BookController extends BaseController
 {
     public function index() {
         $books = Book::getList();
-        var_dump($books);
-        echo "Hello, this is home page!";
-        $this->smarty->assign("user_name", "flybeta");
-        $this->smarty->display('index.html');
+        $this->smarty->assign("books", $books);
+        $this->smarty->display('book/index.html');
     }
 
     public function detail() {
@@ -20,7 +18,7 @@ class BookController extends BaseController
         $book = Book::get($id);
         $this->smarty->assign("user_name", "flybeta");
         $this->smarty->assign("book", $book);
-        $this->smarty->display('detail.html');
+        $this->smarty->display('book/detail.html');
     }
 
     public function add() {

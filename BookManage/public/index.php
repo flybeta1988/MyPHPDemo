@@ -7,6 +7,7 @@ const LIBS_DIR = APP_DIR . "/libs/";
 const LOGS_DIR = APP_DIR. "/logs/";
 const MODELS_DIR = APP_DIR. "/models/";
 const TRAITS_DIR = APP_DIR. "/traits/";
+const EXCEPTIONS_DIR = APP_DIR. "/exceptions/";
 const CONTROLLERS_DIR = APP_DIR. "/controllers/";
 
 include_once LIBS_DIR. "/AutoLoader.php";

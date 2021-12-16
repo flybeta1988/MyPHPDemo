@@ -2,6 +2,8 @@
 
 namespace App\Libs;
 
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\FirePHPHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
@@ -13,12 +15,35 @@ class Log
         if (!is_null(self::$instance)) {
             return self::$instance;
         }
-        self::$instance = new Logger("test");
-        self::$instance->pushHandler(new StreamHandler(LOGS_DIR.'/dev.log', Logger::WARNING));
+
+        $log = new Logger("test");
+
+        $stream = new StreamHandler(LOGS_DIR.'dev.log');
+
+        $formatter = new LineFormatter(
+            "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n",
+            "Y-m-d H:i:s.u"
+        );
+
+        $stream->setFormatter($formatter);
+        $log->pushHandler($stream);
+
+        /*$firephp = new FirePHPHandler();
+        self::$instance->pushHandler($firephp);*/
+
+        self::$instance = $log;
         return self::$instance;
     }
 
     public static function info($msg) {
         self::getInstance()->info($msg);
+    }
+
+    public static function warning($msg) {
+        self::getInstance()->warning($msg);
+    }
+
+    public static function error($msg) {
+        self::getInstance()->error($msg);
     }
 }

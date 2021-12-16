@@ -21,8 +21,11 @@ class AutoLoader
      * @return false|string
      */
     private static function getRealPath($class_name) {
+
         $pos = strrpos($class_name, "\\") + 1;
+
         $filename = substr($class_name, $pos);
+
         if (self::isControllerClass($class_name)) {
             $file_path = realpath(CONTROLLERS_DIR. $filename. ".php");
         } else if (self::isModelClass($class_name)) {
@@ -31,6 +34,8 @@ class AutoLoader
             $file_path = LIBS_DIR. $filename. ".php";
         } else if (self::isTraitClass($class_name)) {
             $file_path = TRAITS_DIR. $filename. ".php";
+        } else if (self::isExceptionClass($class_name)) {
+            $file_path = EXCEPTIONS_DIR. $filename. ".php";
         }
 
         return $file_path;
@@ -50,6 +55,10 @@ class AutoLoader
 
     private static function isTraitClass($class_name) {
         return false !== strpos($class_name, 'Traits');
+    }
+
+    private static function isExceptionClass($class_name) {
+        return false !== strpos($class_name, 'Exceptions');
     }
 }
 
