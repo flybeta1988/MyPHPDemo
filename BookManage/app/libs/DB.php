@@ -18,7 +18,7 @@ class DB
 
         $host = $config['host'] ?? "127.0.0.1";
         $port = $config['post'] ?? 3306;
-        $dbname = $config['dbname'] ?? "test";
+        $dbname = $config['dbname'] ?? "bookdb";
 
         $dsn = sprintf("mysql:host=%s;port=%d;dbname=%s", $host, $port, $dbname);
 

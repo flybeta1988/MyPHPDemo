@@ -7,9 +7,9 @@
 <body>
 <div>
     <ul>
-        {{foreach $books as $book}}
-        <li>{{$book->name}}</li>
-        {{/foreach}}
+        {% foreach $books as $book %}
+        <li>{% $book->name %}</li>
+        {% /foreach %}
     </ul>
 </div>
 </body>

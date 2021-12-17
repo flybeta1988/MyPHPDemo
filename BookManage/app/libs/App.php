@@ -1,8 +1,6 @@
 <?php
 namespace App\Libs;
 
-use App\Exceptions\ActionException;
-
 class App
 {
     private $route;
@@ -31,7 +29,8 @@ class App
         $routes = $this->loadRoutes();
         $action_str = $routes[$this->route] ?? '';
         if (!$action_str) {
-            //Util::redirect("/404.php");
+            Log::warning(__METHOD__. " route:{$this->route} not found!");
+            Util::redirect("/404.php");
         }
 
         Log::info(__METHOD__. " action_str:". $action_str);
@@ -58,8 +57,6 @@ class App
         //方法4
         try {
             call_user_func([$class, $method], ...$params);
-        } catch(ActionException $e) {
-            Log::error("[{$e->getCode()}] ". $e->getMessage()." Trace:". $e->getTraceAsString());
         } catch (\Exception $e) {
             Log::error("[{$e->getCode()}] ". $e->getMessage()." Trace:". $e->getTraceAsString());
             Util::redirect("/500.php");
