@@ -18,7 +18,12 @@ class Log
 
         $log = new Logger("test");
 
-        $stream = new StreamHandler(LOGS_DIR.'dev.log');
+        $logfile = LOGS_DIR.'dev.log';
+        if (!file_exists($logfile)) {
+            touch($logfile);
+        }
+
+        $stream = new StreamHandler($logfile);
 
         $formatter = new LineFormatter(
             "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n",

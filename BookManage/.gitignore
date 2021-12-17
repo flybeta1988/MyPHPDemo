@@ -1,2 +1,3 @@
 vendor
 tpls_c/*
+app/logs/*
