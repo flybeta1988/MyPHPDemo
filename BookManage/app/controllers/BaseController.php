@@ -14,8 +14,8 @@ abstract class BaseController
             $smarty = new \Smarty();
             $smarty->template_dir = BASE_DIR. "/tpls/";
             $smarty->compile_dir = BASE_DIR. "/tpls_c/";
-            $smarty->left_delimiter  = "{%";
-            $smarty->right_delimiter = "%}";
+            $smarty->left_delimiter  = "{{";
+            $smarty->right_delimiter = "}}";
             $this->smarty = $smarty;
         }
 

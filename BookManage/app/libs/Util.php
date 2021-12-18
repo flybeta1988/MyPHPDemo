@@ -7,4 +7,9 @@ class Util
         header("Location: {$url}");
         exit();
     }
+
+    public static function notice($msg) {
+        header("Location: /notice?msg={$msg}");
+        exit();
+    }
 }

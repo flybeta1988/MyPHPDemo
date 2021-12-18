@@ -1,6 +1,8 @@
 <?php
 namespace App\Libs;
 
+use App\Exceptions\ActionException;
+
 class DB
 {
     private static $instance;
@@ -53,7 +55,9 @@ class DB
 
     public static function getRows(string $sql) :array
     {
-        $stmt = self::getInstance()->query($sql);
+        if (!($stmt = self::getInstance()->query($sql))) {
+            throw new ActionException("get data from DB error, sql:[{$sql}]");
+        }
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 }

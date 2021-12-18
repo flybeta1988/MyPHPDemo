@@ -29,8 +29,10 @@ class App
         $routes = $this->loadRoutes();
         $action_str = $routes[$this->route] ?? '';
         if (!$action_str) {
-            Log::warning(__METHOD__. " route:{$this->route} not found!");
-            Util::redirect("/404.php");
+            $msg = "route: [{$this->route}] not found!";
+            Log::warning(__METHOD__. " $msg");
+            //Util::redirect("/404.php");
+            header("Location: {$this->route}", true, 404);
         }
 
         Log::info(__METHOD__. " action_str:". $action_str);
@@ -58,8 +60,14 @@ class App
         try {
             call_user_func([$class, $method], ...$params);
         } catch (\Exception $e) {
-            Log::error("[{$e->getCode()}] ". $e->getMessage()." Trace:". $e->getTraceAsString());
-            Util::redirect("/500.php");
+            $output = array(
+                "errCode" => $e->getCode(),
+                "errMsg" => $e->getMessage(),
+                "Trace" => $e->getTraceAsString()
+            );
+            var_dump($output);
+            Log::error(var_export($output, true));
+            //Util::redirect("/500.php");
         }
     }
 

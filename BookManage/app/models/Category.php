@@ -1,14 +1,14 @@
 <?php
 namespace App\Models;
 
-class Book extends Base
+class Category extends Base
 {
-    protected $table = 'book';
+    protected $table = 'category';
 
     public function __construct()
     {
         $this->attributes["name"] = '';
-        $this->attributes["isbn"] = '';
+        $this->attributes["uid"] = 0;
         parent::__construct();
     }
 }

@@ -47,9 +47,16 @@ class Base
         return DB::insert($sql);
     }
 
-    private static function getTableName() {
-        $class_name = static::class;
-        return strtolower(substr($class_name, strrpos($class_name, "\\") + 1));
+    protected static function getCustomTableName() {
+        return '';
+    }
+
+    public static function getTableName() {
+        if (!($table_name = static::getCustomTableName())) {
+            $class_name = static::class;
+            $table_name = strtolower(substr($class_name, strrpos($class_name, "\\") + 1));
+        }
+        return $table_name;
     }
 
     public static function get($id) {
