@@ -1,14 +1,21 @@
 <?php
 namespace App\Controllers;
 
+use App\Libs\Response;
 use App\Models\Category;
 
 class CategoryController extends AuthController
 {
     public function index() {
+        $rows = [];
         $categorys = Category::getList();
-        $this->smarty->assign("categorys", $categorys);
-        $this->smarty->display('index.tpl');
+        foreach ($categorys as $category) {
+            $rows[] = array(
+                'id' => $category->id,
+                'name' => $category->name,
+            );
+        }
+        Response::exitJson($rows);
     }
 
     public function add() {

@@ -1,12 +1,14 @@
 <?php
 return array(
     "/" => "HomeController@index",
-    "/login" => "HomeController@login",
+    "/login" => "GuestController@login",
     "/logout" => "HomeController@logout",
     "/notice" => "HomeController@notice",
     "/welcome" => "HomeController@welcome",
     "/phpinfo" => "HomeController@phpinfo",
+    "/book/add" => "BookController@add",
     "/book/index" => "BookController@index",
     "/book/detail" => "BookController@detail",
-    "/book/shelf/index" => "ShelfController@index"
+    "/book/shelf/index" => "ShelfController@index",
+    "/category/list" => "CategoryController@index",
 );

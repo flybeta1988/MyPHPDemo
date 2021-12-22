@@ -1,9 +1,11 @@
 <?php
 namespace App\Libs;
 
+session_start();
+
 class Session
 {
-    const KEY_USER_PREFX = "user:";
+    const LOGIN_USER_ID = "login_user_id";
 
     /**
      * @return mixed
@@ -18,7 +20,7 @@ class Session
         $_SESSION[$key] = $value;
     }
 
-    public static function getUserKey($uid) {
-        return self::KEY_USER_PREFX. $uid;
+    public static function getUserKey() {
+        return self::LOGIN_USER_ID;
     }
 }

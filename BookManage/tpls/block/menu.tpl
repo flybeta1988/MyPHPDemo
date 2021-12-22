@@ -22,7 +22,7 @@
 				<ul>
 					<li><a data-href="/book/shelf/index" data-title="书架管理" href="javascript:void(0)">书架管理</a></li>
 					<li><a data-href="product-category.html" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
-					<li><a data-href="product-list.html" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
+					<li><a data-href="/book/index" data-title="图书列表" href="javascript:void(0)">图书列表</a></li>
 				</ul>
 			</dd>
 		</dl>

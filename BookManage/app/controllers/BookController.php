@@ -1,15 +1,19 @@
 <?php
 namespace App\Controllers;
 
+use App\Exceptions\ActionException;
 use App\Libs\Log;
+use App\Libs\Uploader;
+use App\Libs\Util;
 use App\Models\Book;
+use Ramsey\Uuid\Uuid;
 
-class BookController extends BaseController
+class BookController extends AuthController
 {
     public function index() {
         $books = Book::getList();
         $this->smarty->assign("books", $books);
-        $this->smarty->display('book/index.html');
+        $this->smarty->display('book/index.tpl');
     }
 
     public function detail() {
@@ -22,10 +26,20 @@ class BookController extends BaseController
     }
 
     public function add() {
-        $book = new Book();
-        $book->name = "111";
-        $book->isbn = mt_rand(1000, 9999);
-        if (!$book->save()) {
+        if ($this->request->isPostMethod()) {
+            var_dump($_FILES);
+            var_dump($_REQUEST);
+
+            $book = new Book();
+            $book->name = $this->request->get('name');
+            $book->isbn = Uuid::uuid1();
+            $book->thumb = (new Uploader('thumb'))->getFile();
+            if (!$book->save()) {
+                throw new ActionException("保存失败");
+            }
+            echo "111";die();
+            //Util::redirect("/book");
         }
+        $this->smarty->display('book/add.tpl');
     }
 }
