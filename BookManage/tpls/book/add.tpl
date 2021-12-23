@@ -3,7 +3,12 @@
 </head>
 <body>
 <div class="page-container">
-	<form action="" method="post" class="form form-horizontal" id="form-article-add" onsubmit="checkOnSubmit();" enctype="multipart/form-data">
+	<form action="" method="post" class="form form-horizontal" id="form-article-add" enctype="multipart/form-data">
+		{{if $add_result}}
+		<div class="row cl">
+			<span class="c-red">前一本图书已添加成功，继续添加吧...</span>
+		</div>
+		{{/if}}
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>图书名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -13,14 +18,22 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>图书ISBN：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="isbn" name="isbn">
+				<input type="text" class="input-text" value="{{$isbn}}" placeholder="" id="isbn" name="isbn">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分  类：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
-					<select name="category" class="select" id="category"></select>
+					<select name="cid" class="select" id="category"></select>
+				</span>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>已  架：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<span class="select-box">
+					<select name="sid" class="select" id="shelf"></select>
 				</span>
 			</div>
 		</div>
@@ -34,8 +47,7 @@
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
-				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
+				<button onClick="checkOnSubmit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 添加 </button>
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
 		</div>
@@ -52,7 +64,8 @@
 <script type="text/javascript">
 
 $(function () {
-	initCategory()
+	initShelf();
+	initCategory();
 });
 
 function initCategory() {
@@ -64,7 +77,6 @@ function initCategory() {
 		success: function (result) {
 			rows = result.data
 			for(i in rows) {
-				//console.log(rows[i]);
 				row = rows[i]
 				cateHtml += '<option value="'+ row.id +'">' + row.name + '</option>';
 			}
@@ -72,7 +84,24 @@ function initCategory() {
 		},
 		dataType: "JSON"
 	});
+}
 
+function initShelf() {
+	var _html = '<option value="0">请选择</option>';
+	$.ajax({
+		type: "POST",
+		url: "/shelf/list",
+		data: [],
+		success: function (result) {
+			rows = result.data
+			for(i in rows) {
+				row = rows[i]
+				_html += '<option value="'+ row.id +'">' + row.name + '</option>';
+			}
+			$("#shelf").html(_html);
+		},
+		dataType: "JSON"
+	});
 }
 
 function checkOnSubmit() {

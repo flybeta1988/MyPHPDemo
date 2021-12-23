@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Libs\ExtSmarty;
 use App\Libs\Request;
 
 abstract class BaseController
@@ -9,16 +10,12 @@ abstract class BaseController
 
     protected $request;
 
+    protected $page_size = 10;
+
     public function __construct(Request $request) {
         if (is_null($this->smarty)) {
-            $smarty = new \Smarty();
-            $smarty->template_dir = BASE_DIR. "/tpls/";
-            $smarty->compile_dir = BASE_DIR. "/tpls_c/";
-            $smarty->left_delimiter  = "{{";
-            $smarty->right_delimiter = "}}";
-            $this->smarty = $smarty;
+            $this->smarty = new ExtSmarty();
         }
-
         $this->request = $request;
     }
 }

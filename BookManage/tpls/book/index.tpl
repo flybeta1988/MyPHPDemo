@@ -5,38 +5,42 @@
 <div>
 	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 产品列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="page-container">
-		<div class="text-c"> 日期范围：
-			<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;">
-			-
-			<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;">
-			<input type="text" name="" id="" placeholder=" 产品名称" style="width:250px" class="input-text">
-			<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜产品</button>
+		<div class="text-c">
+			<form method="post" action="">
+				<input type="text" name="keyword" id="" placeholder=" 产品名称" style="width:250px" class="input-text">
+				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜产品</button>
+			</form>
 		</div>
-		<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="product_add('添加产品', '/book/add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加产品</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+		<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="product_add('添加产品', '/book/add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加产品</a></span> <span class="r">共有数据：<strong>{{$total}}</strong> 条</span> </div>
 		<div class="mt-20">
 			<table class="table table-border table-bordered table-bg table-hover table-sort">
 				<thead>
 					<tr class="text-c">
-						<th width="40"><input name="" type="checkbox" value=""></th>
-						<th width="40">ID</th>
-						<th width="60">缩略图</th>
-						<th width="100">产品名称</th>
-						<th width="100">ISBN</th>
-						<th width="60">发布状态</th>
+						<th width="20"><input name="" type="checkbox" value=""></th>
+						<th width="20">ID</th>
+						<th width="50">缩略图</th>
+						<th width="200">产品名称</th>
+						<th width="200">ISBN</th>
+						<th width="60">分类</th>
+						<th width="60">书架</th>
+						<th width="30">状态</th>
 						<th width="100">操作</th>
 					</tr>
 				</thead>
 				<tbody>
+					{{foreach $books as $book}}
 					<tr class="text-c va-m">
-						<td><input name="" type="checkbox" value=""></td>
-						<td>001</td>
-						<td><a onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img width="60" class="product-thumb" src="temp/product/Thumb/6204.jpg"></a></td>
-						<td class="text-l"><a style="text-decoration:none" onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img title="国内品牌" src="static/h-ui.admin/images/cn.gif"> <b class="text-success">圣象</b> 哥本哈根橡木地板KS8373</a></td>
-						<td class="text-l"></td>
-						<td></td>
-						<td class="td-status"><span class="label label-success radius">已发布</span></td>
+						<td><input name="" type="checkbox" value="{{$book->id}}"></td>
+						<td>{{$book->id}}</td>
+						<td><a onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img width="60" class="product-thumb" src="{{$book->thumb|imageUrl}}"></a></td>
+						<td class="text-l"><a style="text-decoration:none" onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;">{{$book->name}}</a></td>
+						<td class="text-l">{{$book->isbn}}</td>
+						<td class="text-l">{{$book->cid}}</td>
+						<td class="text-l">{{$book->sid}}</td>
+						<td class="td-status"><span class="label label-success radius">{{$book->status|bookStatusMsg}}</span></td>
 						<td class="td-manage"><a style="text-decoration:none" onClick="product_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_edit('产品编辑','product-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 					</tr>
+					{{/foreach}}
 				</tbody>
 			</table>
 		</div>
@@ -82,6 +86,7 @@ $('.table-sort').dataTable({
 	  {"orderable":false,"aTargets":[0,7]}// 制定列不参与排序
 	]
 });
+
 /*产品-添加*/
 function product_add(title,url){
 	var index = layer.open({

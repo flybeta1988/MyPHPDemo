@@ -11,4 +11,5 @@ return array(
     "/book/detail" => "BookController@detail",
     "/book/shelf/index" => "ShelfController@index",
     "/category/list" => "CategoryController@index",
+    "/shelf/list" => "ShelfController@ajaxList",
 );

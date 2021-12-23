@@ -22,7 +22,7 @@ class Request
     }
 
     public function get($key) {
-        return $_REQUEST[$key] ?? null;
+        return isset($_REQUEST[$key]) ? trim($_REQUEST[$key]) : null;
     }
 
     public function all() {

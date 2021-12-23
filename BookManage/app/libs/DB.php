@@ -7,6 +7,8 @@ class DB
 {
     private static $instance;
 
+    const PAGE_SIZE = 10;
+
     /**
      * DB constructor.
      * @param array $config
@@ -48,6 +50,11 @@ class DB
         return self::getInstance()->lastInsertId();
     }
 
+    public static function getTotal(string $sql) {
+        $stmt = self::getInstance()->query($sql);
+        return $stmt->rowCount();
+    }
+
     public static function getRow(string $sql) {
         $stmt = self::getInstance()->query($sql);
         return $stmt->fetch(\PDO::FETCH_OBJ);
@@ -59,5 +66,29 @@ class DB
             throw new ActionException("get data from DB error, sql:[{$sql}]");
         }
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public static function parseFilters(array $filters) {
+        if (empty($filters)) {
+            return '';
+        }
+
+        $result = '';
+        $wheres = [];
+        foreach ($filters as $filter) {
+
+            list($field, $opt, $value) = $filter;
+
+            if ('LIKE' == strtoupper($opt)) {
+                $wheres[] = "{$field} {$opt} '%{$value}%'";
+            } else {
+                $wheres[] = "{$field} {$opt} '{$value}'";
+            }
+        }
+
+        if ($wheres) {
+            $result = join(' ADN ', $wheres);
+        }
+        return $result;
     }
 }

@@ -65,9 +65,20 @@ class Base
         );
     }
 
-    public static function getList() {
-        return DB::getRows(
-            sprintf("SELECT * FROM `%s` WHERE id > 0", self::getTableName())
-        );
+    public static function getList(&$total, $filter=[], $page=1) {
+
+        $sql = sprintf("SELECT * FROM `%s`", self::getTableName());
+        if (!empty($filter) && ($where_str = DB::parseFilters($filter))) {
+            $sql .= ' WHERE '. $where_str;
+        }
+
+        $total = DB::getTotal($sql);
+
+        $limit = DB::PAGE_SIZE;
+        $offset = max(0, ($page - 1)) * $limit;
+
+        $sql .= " limit {$offset}, {$limit}";
+
+        return DB::getRows($sql);
     }
 }

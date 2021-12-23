@@ -8,6 +8,8 @@ use App\Libs\Util;
 
 abstract class AuthController extends BaseController
 {
+    protected $cuid;
+
     public function __construct(Request $request)
     {
         parent::__construct($request);
@@ -18,5 +20,7 @@ abstract class AuthController extends BaseController
         if (!$login_uid) {
             Util::redirect('/login');
         }
+
+        $this->cuid = $login_uid;
     }
 }

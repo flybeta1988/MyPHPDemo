@@ -62,4 +62,6 @@ class AutoLoader
     }
 }
 
+include_once LIBS_DIR. "/SmartyFilter.php";
+
 spl_autoload_register(array('App\Libs\AutoLoader', 'load'));

@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Libs\Response;
 use App\Models\BookShelf;
 use App\Models\Category;
 
@@ -15,6 +16,11 @@ class ShelfController extends AuthController
         $shelfs = BookShelf::getList();
         $this->smarty->assign("rows", $shelfs);
         $this->smarty->display('shelf/index.tpl');
+    }
+
+    public function ajaxList() {
+        $rows = BookShelf::getList();
+        Response::exitJson($rows);
     }
 
     public function add() {
