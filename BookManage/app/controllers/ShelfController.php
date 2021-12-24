@@ -13,14 +13,10 @@ use App\Models\Category;
 class ShelfController extends AuthController
 {
     public function index() {
-        $shelfs = BookShelf::getList();
-        $this->smarty->assign("rows", $shelfs);
+        $shelfs = BookShelf::getListＷithPage($total);
+        $this->smarty->assign("total", $total);
+        $this->smarty->assign("shelfs", $shelfs);
         $this->smarty->display('shelf/index.tpl');
-    }
-
-    public function ajaxList() {
-        $rows = BookShelf::getList();
-        Response::exitJson($rows);
     }
 
     public function add() {

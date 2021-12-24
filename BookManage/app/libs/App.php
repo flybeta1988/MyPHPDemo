@@ -1,6 +1,8 @@
 <?php
 namespace App\Libs;
 
+use App\Exceptions\ActionException;
+
 class App
 {
     private $route;
@@ -57,17 +59,28 @@ class App
         //(new $controller())->$action($this->request);
 
         //方法4
+        $ajax = $this->request->get('ajax');
         try {
-            call_user_func([$class, $method], ...$params);
+            if ($ajax) {
+                Response::exitJson(call_user_func([$class, $method], ...$params));
+            } else {
+                call_user_func([$class, $method], ...$params);
+            }
         } catch (\Exception $e) {
             $output = array(
                 "errCode" => $e->getCode(),
                 "errMsg" => $e->getMessage(),
                 "Trace" => $e->getTraceAsString()
             );
-            var_dump($output);
+
             Log::error(var_export($output, true));
-            //Util::redirect("/500.php");
+
+            if ($ajax > 0) {
+                Response::exitException($e);
+            } else {
+                var_dump($output);
+                //Util::redirect("/500.php");
+            }
         }
     }
 

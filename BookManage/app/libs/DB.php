@@ -42,6 +42,14 @@ class DB
         return 0;
     }
 
+    public static function update(string $sql) {
+        return self::getInstance()->exec($sql);
+    }
+
+    public static function delete(string $sql) {
+        return self::getInstance()->exec($sql);
+    }
+
     public static function exec($sql) {
         return self::getInstance()->exec($sql);
     }
@@ -70,24 +78,25 @@ class DB
 
     public static function parseFilters(array $filters) {
         if (empty($filters)) {
-            return '';
+            //return '';
         }
 
         $result = '';
-        $wheres = [];
+        $wheres = ['ISNULL(dtime)'];
+
         foreach ($filters as $filter) {
-
             list($field, $opt, $value) = $filter;
-
             if ('LIKE' == strtoupper($opt)) {
                 $wheres[] = "{$field} {$opt} '%{$value}%'";
+            } elseif ('IN' == strtoupper($opt)) {
+                $wheres[] = "{$field} {$opt} ({$value})";
             } else {
                 $wheres[] = "{$field} {$opt} '{$value}'";
             }
         }
 
         if ($wheres) {
-            $result = join(' ADN ', $wheres);
+            $result = join(' AND ', $wheres);
         }
         return $result;
     }

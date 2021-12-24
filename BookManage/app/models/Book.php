@@ -30,4 +30,26 @@ class Book extends Base
         );
         return $data[$status] ?? '未知';
     }
+
+    public static function getListＷithPage(&$total, $filter=[], $page=1) {
+
+        if (!($books = parent::getListＷithPage($total, $filter, $page))) {
+            return $books;
+        }
+
+        $cids = array_filter(array_column($books, 'cid'));
+        $categorys = Category::getList([['id', 'IN', join(',', $cids)]]);
+        $cates = array_column($categorys, null, 'id');
+
+        $sids = array_filter(array_column($books, 'sid'));
+        $shelfList = BookShelf::getList([['id', 'IN', join(',', $sids)]]);
+        $shelfs = array_column($shelfList, null, 'id');
+
+        foreach ($books as $book) {
+            $book->shelf = $shelfs[$book->sid] ?? null;
+            $book->category = $cates[$book->cid] ?? null;
+        }
+
+        return $books;
+    }
 }

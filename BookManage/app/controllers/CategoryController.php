@@ -8,14 +8,14 @@ class CategoryController extends AuthController
 {
     public function index() {
         $rows = [];
-        $categorys = Category::getList();
+        $categorys = Category::getListＷithPage();
         foreach ($categorys as $category) {
             $rows[] = array(
                 'id' => $category->id,
                 'name' => $category->name,
             );
         }
-        Response::exitJson($rows);
+        Response::exitJsonOk($rows);
     }
 
     public function add() {

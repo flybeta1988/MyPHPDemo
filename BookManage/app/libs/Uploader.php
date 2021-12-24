@@ -18,6 +18,11 @@ class Uploader
 
         $origin_file = $_FILES[$this->formFileName]['name'] ?? '';
         $tmp_file = $_FILES[$this->formFileName]['tmp_name'] ?? '';
+        $thumb = $_REQUEST['thumb'] ?? '';
+        if ($thumb && !$tmp_file) {
+            return $thumb;
+        }
+
         if (!$tmp_file) {
             throw new ActionException("缩图不能为空", 1);
         }

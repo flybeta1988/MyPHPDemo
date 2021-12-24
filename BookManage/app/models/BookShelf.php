@@ -16,4 +16,10 @@ class BookShelf extends Base
     protected static function getCustomTableName() {
         return 'book_shelf';
     }
+
+    public static function getListＷithPage(&$total, $filter=[], $page=1) {
+        $shelfs = parent::getListＷithPage($total, $filter, $page);
+        Category::extendCategory($shelfs);
+        return $shelfs;
+    }
 }
