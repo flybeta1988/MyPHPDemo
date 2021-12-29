@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
 
+use App\Libs\DB;
+
 class Book extends Base
 {
     protected $table = 'book';
@@ -31,25 +33,63 @@ class Book extends Base
         return $data[$status] ?? '未知';
     }
 
+    private static function extend4List(&$books) {
+
+        $cids = array_filter(array_column($books, 'cid'));
+        $cates = Category::getListByIdList($cids);
+
+        $sids = array_filter(array_column($books, 'sid'));
+        $shelfList = BookShelf::getList([['id', 'IN', join(',', $sids)]]);
+        $shelfs = array_column($shelfList, null, 'id');
+
+        foreach ($books as &$book) {
+            $book->shelf = $shelfs[$book->sid] ?? null;
+            $book->category = $cates[$book->cid] ?? null;
+        }
+    }
+
     public static function getListＷithPage(&$total, $filter=[], $page=1) {
 
         if (!($books = parent::getListＷithPage($total, $filter, $page))) {
             return $books;
         }
 
-        $cids = array_filter(array_column($books, 'cid'));
-        $categorys = Category::getList([['id', 'IN', join(',', $cids)]]);
-        $cates = array_column($categorys, null, 'id');
-
-        $sids = array_filter(array_column($books, 'sid'));
-        $shelfList = BookShelf::getList([['id', 'IN', join(',', $sids)]]);
-        $shelfs = array_column($shelfList, null, 'id');
-
-        foreach ($books as $book) {
-            $book->shelf = $shelfs[$book->sid] ?? null;
-            $book->category = $cates[$book->cid] ?? null;
-        }
+        self::extend4List($books);
 
         return $books;
+    }
+
+    public static function getStatNumByXidList(array $xid_list, $group_field='sid') {
+        if (empty($xid_list)) {
+            return [];
+        }
+        $sql = sprintf(
+            "SELECT %s, COUNT(1) AS num FROM `%s` WHERE ISNULL(dtime) AND %s IN (%s) GROUP BY %s",
+            $group_field,
+            self::getTableName(),
+            $group_field,
+            join(',', $xid_list),
+            $group_field
+        );
+        if (!($rows = DB::getRows($sql))) {
+            return [];
+        }
+        return array_column($rows, 'num', $group_field);
+    }
+
+    public static function lendOut($book_id) {
+        if (!$book_id || !($book = Book::get($book_id))) {
+            return false;
+        }
+        $book->status = Book::STATUS_LENT;
+        return $book->save();
+    }
+
+    public static function returnBack($book_id) {
+        if (!$book_id || !($book = Book::get($book_id))) {
+            return false;
+        }
+        $book->status = Book::STATUS_FREE;
+        return $book->save();
     }
 }

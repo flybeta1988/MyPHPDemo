@@ -12,12 +12,25 @@ class Category extends Base
         parent::__construct();
     }
 
-    public static function extendCategory(array $entitys) {
-        $cids = array_filter(array_column($entitys, 'cid'));
-        $categorys = Category::getList([['id', 'IN', join(',', $cids)]]);
-        $cates = array_column($categorys, null, 'id');
-        foreach ($entitys as $entity) {
-            $entity->category = $cates[$entity->cid] ?? null;
+    private static function extend4List(&$categorys) {
+
+        $ids = array_filter(array_column($categorys, 'id'));
+
+        $stats = Book::getStatNumByXidList($ids, 'cid');
+
+        foreach ($categorys as &$category) {
+            $category->book_num = $stats[$category->id] ?? 0;
         }
+    }
+
+    public static function getListByIdList($id_list) {
+        $categorys = Category::getList([['id', 'IN', join(',', $id_list)]]);
+        return array_column($categorys, null, 'id');
+    }
+
+    public static function getListＷithPage(&$total, $filter=[], $page=1) {
+        $shelfs = parent::getListＷithPage($total, $filter, $page);
+        self::extend4List($shelfs);
+        return $shelfs;
     }
 }

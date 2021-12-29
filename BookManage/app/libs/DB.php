@@ -31,6 +31,10 @@ class DB
             throw new \Exception("init db instance fail!");
         }
 
+        //Log::info(__METHOD__. " new pdo ok!");
+
+        self::$instance = $pdo;
+
         return $pdo;
     }
 
@@ -52,6 +56,18 @@ class DB
 
     public static function exec($sql) {
         return self::getInstance()->exec($sql);
+    }
+
+    public static function beginTransaction() {
+        return self::getInstance()->beginTransaction();
+    }
+
+    public static function commit() {
+        return self::getInstance()->commit();
+    }
+
+    public static function rollBack() {
+        return self::getInstance()->rollBack();
     }
 
     public static function getLastInsertId() {

@@ -27,13 +27,13 @@ class Response
         exit(json_encode($arr));
     }
 
-    public static function exitJsonOk($data=[], $msg='') {
+    public static function exitJsonOk($msg='', $data=[]) {
         exit(
             json_encode(self::ok($msg, $data))
         );
     }
 
-    public static function exitJsonFail($data=[], $msg='') {
+    public static function exitJsonFail($msg='', $data=[]) {
         exit(
             json_encode(self::fail($msg, $data))
         );

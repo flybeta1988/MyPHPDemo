@@ -99,9 +99,7 @@ function initCategory() {
 	});
 }
 
-function checkOnSubmit() {
-	alert(222);
-}
+function checkOnSubmit() {}
 
 </script>
 </body>

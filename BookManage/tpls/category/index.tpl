@@ -2,13 +2,8 @@
 <div class="page-container">
     <div class="text-c">
         <form class="Huiform" method="post" action="" target="_self">
-            <input type="text" placeholder="书架名称" value="" class="input-text" id="name" style="width:120px">
-            <select name="cid" id="category">
-                {{foreach $categorys as $category}}
-                    <option value="{{$category->id}}">{{$category->name}}</option>
-                {{/foreach}}
-            </select>
-			</span><button type="button" class="btn btn-success" id="" name="" onClick="add(this);"><i class="Hui-iconfont">&#xe600;</i> 添加</button>
+            <input type="text" placeholder="分类名称" value="" class="input-text" id="name" style="width:120px">
+			</span><button type="button" class="btn btn-success" id="" name="" onClick="add();"><i class="Hui-iconfont">&#xe600;</i> 添加</button>
         </form>
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="r">共有数据：<strong>{{$total}}</strong> 条</span> </div>
@@ -19,23 +14,21 @@
                 <th width="40"><input name="" type="checkbox" value=""></th>
                 <th width="70">ID</th>
                 <th width="120">名称</th>
-                <th width="120">分类</th>
                 <th width="100">图书数</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            {{foreach $shelfs as $shelf}}
+            {{foreach $categorys as $row}}
             <tr class="text-c">
                 <td><input name="" type="checkbox" value=""></td>
-                <td>{{$shelf->id}}</td>
-                <td>{{$shelf->name}}</td>
-                <td>{{if $shelf->cid > 0}}{{$shelf->category->name}}{{/if}}</td>
-                <td>{{$shelf->book_num}}</td>
+                <td>{{$row->id}}</td>
+                <td>{{$row->name}}</td>
+                <td>{{$row->book_num}}</td>
                 <td class="f-14 product-brand-manage">
-                    <a style="text-decoration:none" onClick="edit({{$shelf->id}})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
-                    {{if !$shelf->book_num > 0}}
-                    <a style="text-decoration:none" class="ml-5" onClick="remove({{$shelf->id}})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                    <a style="text-decoration:none" onClick="edit({{$row->id}})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
+                    {{if !$row->book_num > 0}}
+                    <a style="text-decoration:none" class="ml-5" onClick="remove({{$row->id}})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
                     {{/if}}
                 </td>
             </tr>
@@ -69,9 +62,9 @@
     function add() {
         $.ajax({
             type: "POST",
-            url: "/book/shelf/add",
+            url: "/category/add",
             dataType: "JSON",
-            data: {"ajax": 1, "name": $("#name").val(), "cid": $("#category").val()},
+            data: {"ajax": 1, "name": $("#name").val()},
             success: function (result) {
                 if (result.code > 0) {
                     layer.alert('"' + result.msg + '"', {icon:2, time:2000});
@@ -85,10 +78,10 @@
     }
 
     function remove(id) {
-        layer.confirm('确认要删除此书架吗？', function(index){
+        layer.confirm('确认要删除此分类吗？', function(index){
             $.ajax({
                 type: "POST",
-                url: "/book/shelf/delete",
+                url: "/category/delete",
                 dataType: "JSON",
                 data: {"ajax": 1, "id": id},
                 success: function (result) {
@@ -108,7 +101,7 @@
         var index = layer.open({
             type: 2,
             title: "编辑",
-            content: "/book/shelf/edit?id=" + id
+            content: "/category/edit?id=" + id
         });
         layer.full(index);
     }

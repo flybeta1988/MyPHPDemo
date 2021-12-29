@@ -11,12 +11,13 @@
 				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜产品</button>
 			</form>
 		</div>
-		<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="product_add('添加产品', '/book/add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加产品</a></span> <span class="r">共有数据：<strong>{{$total}}</strong> 条</span> </div>
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+			<span class="l"><a class="btn btn-primary radius" onclick="product_add('添加图书', '/book/add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加图书</a></span> <span class="r">共有数据：<strong>{{$total}}</strong> 条</span> </div>
 		<div class="mt-20">
 			<table class="table table-border table-bordered table-bg table-hover table-sort">
 				<thead>
 					<tr class="text-c">
-						<th width="20"><input name="" type="checkbox" value=""></th>
+						<th width="40"><input name="" type="checkbox" value=""></th>
 						<th width="20">ID</th>
 						<th width="50">缩略图</th>
 						<th width="200">产品名称</th>
@@ -30,7 +31,7 @@
 				<tbody>
 					{{foreach $books as $book}}
 					<tr class="text-c va-m">
-						<td><input name="" type="checkbox" value="{{$book->id}}"></td>
+						<td><input name="" type="checkbox" value=""></td>
 						<td>{{$book->id}}</td>
 						<td><a onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img width="60" class="product-thumb" src="{{$book->thumb|imageUrl}}"></a></td>
 						<td class="text-l"><a style="text-decoration:none" onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;">{{$book->name}}</a></td>

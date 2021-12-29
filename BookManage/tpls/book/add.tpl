@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>已  架：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>书  架：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 					<select name="sid" class="select" id="shelf">

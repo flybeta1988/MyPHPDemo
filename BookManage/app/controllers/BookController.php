@@ -6,8 +6,6 @@ use App\Libs\Request;
 use App\Libs\Response;
 use App\Libs\Uploader;
 use App\Models\Book;
-use App\Models\BookShelf;
-use App\Models\Category;
 use Ramsey\Uuid\Uuid;
 
 class BookController extends AuthController
@@ -26,6 +24,10 @@ class BookController extends AuthController
         $this->smarty->display('book/index.tpl');
     }
 
+    public function ajaxList() {
+        return Response::ok("获取成功", Book::getList());
+    }
+
     private function checkBookValidate(Request $request, &$book) {
         if (!($id = $request->get('id')) || !($book = Book::get($id))) {
             throw new ActionException("无效id");
@@ -39,11 +41,6 @@ class BookController extends AuthController
         $this->smarty->display('book/detail.tpl');
     }
 
-    private function assignCategorys() {
-        $this->smarty->assign("shelfs", BookShelf::getList());
-        $this->smarty->assign("categorys", Category::getList());
-    }
-
     public function edit() {
         $this->checkBookValidate($this->request, $book);
 
@@ -52,8 +49,6 @@ class BookController extends AuthController
             $this->save($book);
             $save_result = 1;
         }
-
-        $this->assignCategorys();
 
         $this->smarty->assign("book", $book);
         $this->smarty->assign("save_result", $save_result);
@@ -79,7 +74,6 @@ class BookController extends AuthController
             $this->save($book);
             $add_result = 1;
         }
-        $this->assignCategorys();
         $this->smarty->assign('isbn', Uuid::uuid1());
         $this->smarty->assign('add_result', $add_result);
         $this->smarty->display('book/add.tpl');

@@ -25,6 +25,10 @@ class Request
         return isset($_REQUEST[$key]) ? trim($_REQUEST[$key]) : null;
     }
 
+    public function getArr($key) {
+        return isset($_REQUEST[$key]) ? $_REQUEST[$key] : [];
+    }
+
     public function all() {
         return $_REQUEST;
     }

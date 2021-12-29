@@ -46,11 +46,10 @@ class Base
 
     public function save() {
         if ($this->id > 0) {
-            $this->update();
+            return $this->update();
         } else{
-            $this->insert();
+            return $this->insert();
         }
-        return $this;
     }
 
     private function insert() {
@@ -67,7 +66,7 @@ class Base
 
         array_walk($values, function (&$value) {
             $value = trim($value);
-            $value = is_numeric($value) ? "{$value}" : "'{$value}'";
+            $value = "'{$value}'";
         });
 
         $sql = sprintf(
@@ -143,6 +142,16 @@ class Base
         }
 
         return $entity;
+    }
+
+    public static function getFirst($filter=[]) {
+
+        $sql = sprintf("SELECT * FROM `%s`", self::getTableName());
+        if (($where_str = DB::parseFilters($filter))) {
+            $sql .= ' WHERE '. $where_str;
+        }
+
+        return DB::getRow($sql);
     }
 
     public static function getList($filter=[]) {

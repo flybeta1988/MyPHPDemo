@@ -5,6 +5,8 @@ use App\Libs\Log;
 use App\Libs\Request;
 use App\Libs\Session;
 use App\Libs\Util;
+use App\Models\BookShelf;
+use App\Models\Category;
 
 abstract class AuthController extends BaseController
 {
@@ -22,5 +24,8 @@ abstract class AuthController extends BaseController
         }
 
         $this->cuid = $login_uid;
+
+        $this->smarty->assign("shelfs", BookShelf::getList());
+        $this->smarty->assign("categorys", Category::getList());
     }
 }
