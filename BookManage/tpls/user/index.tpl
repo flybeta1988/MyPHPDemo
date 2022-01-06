@@ -17,6 +17,7 @@
 						<th width="50">姓 名</th>
                         <th width="60">手机号</th>
                         <th width="100">身份证号</th>
+                        <th width="40">押 金</th>
                         <th width="150">地 址</th>
 						<th width="60">角 色</th>
 						<th width="60">已借书数</th>
@@ -32,6 +33,7 @@
 						<td>{{$user->name}}</td>
                         <td class="text-l">{{$user->mobile}}</td>
                         <td class="text-l">{{$user->idcard}}</td>
+                        <td class="text-l">{{$user->money}}</td>
                         <td class="text-l">{{$user->address}}</td>
 						<td class="text-l">{{$user->role_str}}</td>
 						<td class="text-l">{{$user->book_num}}</td>
@@ -49,7 +51,9 @@
 						</td>
 						<td class="td-manage">
 							<a style="text-decoration:none" class="ml-5" onClick="edit('用户编辑', '/user/edit', {{$user->id}})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
+							{{if $user->book_num <= 0 }}
 							<a style="text-decoration:none" class="ml-5" onClick="remove(this, {{$user->id}})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+							{{/if}}
 						</td>
 					</tr>
 					{{/foreach}}

@@ -58,6 +58,7 @@ class UserController extends AuthController
         $user->name = $this->request->get('name');
         $user->mobile = $this->request->get('mobile');
         $user->idcard = $this->request->get('idcard');
+        $user->money = $this->request->get('money');
         $user->address = $this->request->get('address');
         $user->role_id = $this->request->get('role_id');
         if (!$user->save()) {

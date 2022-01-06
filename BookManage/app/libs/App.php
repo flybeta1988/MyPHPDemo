@@ -1,8 +1,6 @@
 <?php
 namespace App\Libs;
 
-use App\Exceptions\ActionException;
-
 class App
 {
     private $route;
@@ -23,11 +21,11 @@ class App
         $this->route = $request_uri;
     }
 
-    public function start() {
-        $this->matchRoute();
+    private function loadRoutes() {
+        return include_once(CONFIG_DIR. "/routers.php");
     }
 
-    private function matchRoute() {
+    public function start() {
         $routes = $this->loadRoutes();
         $action_str = $routes[$this->route] ?? '';
         if (!$action_str) {
@@ -82,9 +80,5 @@ class App
                 //Util::redirect("/500.php");
             }
         }
-    }
-
-    private function loadRoutes() {
-        return include_once(CONFIG_DIR. "/routers.php");
     }
 }

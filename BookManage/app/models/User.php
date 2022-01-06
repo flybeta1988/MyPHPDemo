@@ -18,6 +18,7 @@ class User extends Base
         $this->attributes["name"] = '';
         $this->attributes["password"] = '';
         $this->attributes["idcard"] = '';
+        $this->attributes["money"] = 0.00;
         $this->attributes["address"] = '';
         $this->attributes["mobile"] = '';
         $this->attributes["role_id"] = self::ROLE_NORMAL;

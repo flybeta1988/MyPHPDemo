@@ -58,6 +58,7 @@ class BookController extends AuthController
     private function save(Book $book) {
         $book->name = $this->request->get('name');
         $book->isbn = $this->request->get('isbn') ?? Uuid::uuid1();
+        $book->price = $this->request->get('price') ?? 0.00;
         $book->thumb = (new Uploader('thumb'))->getFile();
         $book->cid = $this->request->get('cid');
         $book->sid = $this->request->get('sid');

@@ -34,7 +34,7 @@
 						<td class="text-l">{{if $row->uid > 0 }}{{$row->admin->name}}{{/if}}</td>
 						<td class="text-l">{{$row->start_time|date_format:"%Y-%m-%d"}}</td>
 						<td class="text-l">{{$row->end_time|date_format:"%Y-%m-%d"}}</td>
-						<td class="text-l">{{$row->return_time|date_format:"%Y-%m-%d"}}</td>
+						<td class="text-l">{{if $row->return_time > 0 }}{{$row->return_time|date_format:"%Y-%m-%d"}}{{else}}--{{/if}}</td>
 						<td class="td-status">
 							<span class="label
 								{{if 2 == $row->status}}
@@ -48,9 +48,10 @@
 							</span>
 						</td>
 						<td class="td-manage">
+							{{if 1 != $row->status}}
 							<a style="text-decoration:none" class="ml-5" onClick="returnBook(this, {{$row->id}})" href="javascript:;" title="还书">还书</a>
-							<a style="text-decoration:none" class="ml-5" onClick="edit('用户编辑', '/user/edit', {{$row->id}})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
-							<a style="text-decoration:none" class="ml-5" onClick="remove(this, {{$row->id}})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+							<!--<a style="text-decoration:none" class="ml-5" onClick="edit('用户编辑', '/user/edit', {{$row->id}})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>-->
+							{{/if}}
 						</td>
 					</tr>
 					{{/foreach}}
@@ -108,24 +109,6 @@ function edit(title, url, id){
 		content: url + "?id=" + id
 	});
 	layer.full(index);
-}
-
-function remove(obj, id){
-	layer.confirm('确认要删除吗？',function(index){
-		$.ajax({
-			type: 'POST',
-			url: '/user/delete',
-			dataType: 'json',
-			data: {'ajax': 1, id: id},
-			success: function(result){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1, time:1000});
-			},
-			error: function(result) {
-				console.log(result.msg);
-			},
-		});		
-	});
 }
 
 function returnBook(obj, id){

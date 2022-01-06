@@ -2,7 +2,7 @@
 return array(
     "/" => "HomeController@index",
     "/login" => "GuestController@login",
-    "/logout" => "HomeController@logout",
+    "/logout" => "GuestController@logout",
     "/notice" => "HomeController@notice",
     "/welcome" => "HomeController@welcome",
     "/phpinfo" => "HomeController@phpinfo",

@@ -15,6 +15,7 @@ class Book extends Base
     {
         $this->attributes["name"] = '';
         $this->attributes["isbn"] = '';
+        $this->attributes["price"] = 0.00;
         $this->attributes["thumb"] = '';
         $this->attributes["sid"] = 0;
         $this->attributes["cid"] = 0;

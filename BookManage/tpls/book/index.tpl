@@ -22,6 +22,7 @@
 						<th width="50">缩略图</th>
 						<th width="200">产品名称</th>
 						<th width="200">ISBN</th>
+						<th width="30">价格(元)</th>
 						<th width="60">分类</th>
 						<th width="60">书架</th>
 						<th width="30">状态</th>
@@ -36,6 +37,7 @@
 						<td><a onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img width="60" class="product-thumb" src="{{$book->thumb|imageUrl}}"></a></td>
 						<td class="text-l"><a style="text-decoration:none" onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;">{{$book->name}}</a></td>
 						<td class="text-l">{{$book->isbn}}</td>
+						<td class="text-l">{{$book->price}}</td>
 						<td class="text-l">
 							{{if $book->cid}}
 								{{$book->category->name}}
@@ -85,35 +87,11 @@
 <script type="text/javascript" src="/js/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 
-var zNodes =[
-	{ id:1, pId:0, name:"一级分类", open:true},
-	{ id:11, pId:1, name:"二级分类"},
-	{ id:111, pId:11, name:"三级分类"},
-	{ id:112, pId:11, name:"三级分类"},
-	{ id:113, pId:11, name:"三级分类"},
-	{ id:114, pId:11, name:"三级分类"},
-	{ id:115, pId:11, name:"三级分类"},
-	{ id:12, pId:1, name:"二级分类 1-2"},
-	{ id:121, pId:12, name:"三级分类 1-2-1"},
-	{ id:122, pId:12, name:"三级分类 1-2-2"},
-];
-		
-		
-		
-$(document).ready(function(){
-	var t = $("#treeDemo");
-	//t = $.fn.zTree.init(t, setting, zNodes);
-	//demoIframe = $("#testIframe");
-	//demoIframe.on("load", loadReady);
-	//var zTree = $.fn.zTree.getZTreeObj("tree");
-	//zTree.selectNode(zTree.getNodeByParam("id",'11'));
-});
-
 $('.table-sort').dataTable({
 	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
 	"bStateSave": true,//状态保存
 	"aoColumnDefs": [
-	  {"orderable":false,"aTargets":[0,7]}// 制定列不参与排序
+	  {"orderable":false,"aTargets":[0, 2, 4, 5, 6, 7, 8]}// 制定列不参与排序
 	]
 });
 

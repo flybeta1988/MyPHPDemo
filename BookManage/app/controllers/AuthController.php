@@ -7,10 +7,12 @@ use App\Libs\Session;
 use App\Libs\Util;
 use App\Models\BookShelf;
 use App\Models\Category;
+use App\Models\User;
 
 abstract class AuthController extends BaseController
 {
     protected $cuid;
+    protected $cuser;
 
     public function __construct(Request $request)
     {
@@ -24,7 +26,9 @@ abstract class AuthController extends BaseController
         }
 
         $this->cuid = $login_uid;
+        $this->cuser = User::get($login_uid);
 
+        $this->smarty->assign("cuser", $this->cuser);
         $this->smarty->assign("shelfs", BookShelf::getList());
         $this->smarty->assign("categorys", Category::getList());
     }

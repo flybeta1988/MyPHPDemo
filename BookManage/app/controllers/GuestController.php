@@ -34,7 +34,8 @@ class GuestController extends BaseController
     }
 
     public function logout() {
-        exit("logout ok!");
+        Session::set(Session::getUserKey(), 0);
+        Util::redirect("/login");
     }
 
     public function phpinfo() {
