@@ -25,6 +25,6 @@ class Animal
     }
 
     public function run() {
-        echo "I can run {$this->speed} km/h";
+        echo "I can run {$this->speed} km/h\n";
     }
 }

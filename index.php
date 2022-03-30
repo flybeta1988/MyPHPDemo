@@ -1,4 +1,5 @@
 <?php
+var_dump(php_ini_loaded_file());die();
 var_dump($_SERVER);die();
 $a = 'Hello A !';
 $device_no = 'aaaaaaaaaa112rr';

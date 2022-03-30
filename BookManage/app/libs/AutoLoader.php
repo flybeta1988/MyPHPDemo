@@ -36,6 +36,8 @@ class AutoLoader
             $file_path = TRAITS_DIR. $filename. ".php";
         } else if (self::isExceptionClass($class_name)) {
             $file_path = EXCEPTIONS_DIR. $filename. ".php";
+        } else if (self::isBinClass($class_name)) {
+            $file_path = BIN_DIR. $filename. ".php";
         }
 
         return $file_path;
@@ -59,6 +61,10 @@ class AutoLoader
 
     private static function isExceptionClass($class_name) {
         return false !== strpos($class_name, 'Exceptions');
+    }
+
+    private static function isBinClass($class_name) {
+        return false !== strpos($class_name, 'Bin');
     }
 }
 

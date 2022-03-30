@@ -3,9 +3,9 @@ return array(
     "/" => "HomeController@index",
     "/login" => "GuestController@login",
     "/logout" => "GuestController@logout",
-    "/notice" => "HomeController@notice",
+    "/notice" => "GuestController@notice",
     "/welcome" => "HomeController@welcome",
-    "/phpinfo" => "HomeController@phpinfo",
+    "/phpinfo" => "GuestController@phpinfo",
 
     "/book/add" => "BookController@add",
     "/book/edit" => "BookController@edit",
@@ -35,4 +35,8 @@ return array(
     "/lend/add" => "LendController@add",
     "/lend/index" => "LendController@index",
     "/lend/return/back" => "LendController@returnBack",
+
+    "/subscribe/add" => "SubscribeController@add",
+    "/subscribe/index" => "SubscribeController@index",
+    "/subscribe/delete" => "SubscribeController@delete",
 );

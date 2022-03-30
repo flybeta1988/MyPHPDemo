@@ -13,6 +13,7 @@ abstract class AuthController extends BaseController
 {
     protected $cuid;
     protected $cuser;
+    protected $role_id;
 
     public function __construct(Request $request)
     {
@@ -27,9 +28,14 @@ abstract class AuthController extends BaseController
 
         $this->cuid = $login_uid;
         $this->cuser = User::get($login_uid);
+        $this->role_id = $this->cuser->role_id;
 
         $this->smarty->assign("cuser", $this->cuser);
         $this->smarty->assign("shelfs", BookShelf::getList());
         $this->smarty->assign("categorys", Category::getList());
+    }
+
+    protected function isAdmin() {
+        return User::ROLE_ADMIN == $this->cuser->role_id;
     }
 }

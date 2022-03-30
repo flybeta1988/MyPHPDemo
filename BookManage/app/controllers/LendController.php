@@ -6,17 +6,17 @@ use App\Libs\DB;
 use App\Libs\Log;
 use App\Libs\Request;
 use App\Libs\Response;
-use App\Libs\Uploader;
 use App\Models\Book;
 use App\Models\LendRecord;
-use App\Models\User;
-use Ramsey\Uuid\Uuid;
-use function Couchbase\basicEncoderV1;
 
 class LendController extends AuthController
 {
-    public function index() {
-        $records = LendRecord::getListＷithPage($total);
+    public function index(Request $request) {
+        $filter = [];
+        if (!$this->isAdmin()) {
+            $filter[] = ['reader_id', '=', $this->cuid];
+        }
+        $records = LendRecord::getListＷithPage($total, $filter, $request->get('page'));
         $this->smarty->assign("total", $total);
         $this->smarty->assign("rows", $records);
         $this->smarty->display('lend/index.tpl');

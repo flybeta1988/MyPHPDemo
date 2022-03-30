@@ -6,7 +6,10 @@
 	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 借阅记录 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="page-container">
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
-			<span class="l"><a class="btn btn-primary radius" onclick="add('出 借', '/lend/add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i>出 借</a></span> <span class="r">共有数据：<strong>{{$total}}</strong> 条</span>
+			{{if $cuser|is_admin}}
+			<span class="l"><a class="btn btn-primary radius" onclick="add('出 借', '/lend/add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i>出 借</a></span>
+			{{/if}}
+			<span class="r">共有数据：<strong>{{$total}}</strong> 条</span>
 		</div>
 		<div class="mt-20">
 			<table class="table table-border table-bordered table-bg table-hover table-sort">
@@ -21,7 +24,9 @@
 						<th width="100">到期时间</th>
 						<th width="100">还书时间</th>
 						<th width="50">状 态</th>
+						{{if $cuser|is_admin}}
 						<th>操 作</th>
+						{{/if}}
 					</tr>
 				</thead>
 				<tbody>
@@ -47,12 +52,14 @@
 								{{$row->status_str}}
 							</span>
 						</td>
+						{{if $cuser|is_admin}}
 						<td class="td-manage">
 							{{if 1 != $row->status}}
 							<a style="text-decoration:none" class="ml-5" onClick="returnBook(this, {{$row->id}})" href="javascript:;" title="还书">还书</a>
 							<!--<a style="text-decoration:none" class="ml-5" onClick="edit('用户编辑', '/user/edit', {{$row->id}})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>-->
 							{{/if}}
 						</td>
+						{{/if}}
 					</tr>
 					{{/foreach}}
 				</tbody>

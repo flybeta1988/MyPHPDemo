@@ -1,5 +1,6 @@
 <?php
 const BASE_DIR = __DIR__. "/../..";
+const BIN_DIR = BASE_DIR. "/bin/";
 const APP_DIR = BASE_DIR. "/app";
 const CONFIG_DIR = APP_DIR . "/configs/";
 const LIBS_DIR = APP_DIR . "/libs/";

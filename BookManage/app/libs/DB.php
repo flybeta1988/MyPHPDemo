@@ -7,7 +7,7 @@ class DB
 {
     private static $instance;
 
-    const PAGE_SIZE = 10;
+    const PAGE_SIZE = 100;
 
     /**
      * DB constructor.
@@ -26,7 +26,7 @@ class DB
 
         $dsn = sprintf("mysql:host=%s;port=%d;dbname=%s", $host, $port, $dbname);
 
-        $pdo = new \PDO($dsn, 'root', 'root');
+        $pdo = new \PDO($dsn, 'root', '123456');
         if (is_null($pdo)) {
             throw new \Exception("init db instance fail!");
         }
@@ -75,12 +75,17 @@ class DB
     }
 
     public static function getTotal(string $sql) {
-        $stmt = self::getInstance()->query($sql);
+        if (!($stmt = self::getInstance()->query($sql))) {
+            return 0;
+        }
         return $stmt->rowCount();
     }
 
     public static function getRow(string $sql) {
-        $stmt = self::getInstance()->query($sql);
+        if (!($stmt = self::getInstance()->query($sql))) {
+            throw new ActionException("get data from DB error, sql:[{$sql}]");
+        }
+        //Log::info(__METHOD__. " stmt:". var_export($stmt, true));
         return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 

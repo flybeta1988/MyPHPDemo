@@ -2,3 +2,4 @@ vendor
 tpls_c/*
 app/logs/*
 public/images/thumbs/*
+.vscode

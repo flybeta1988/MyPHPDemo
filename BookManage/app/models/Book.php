@@ -34,7 +34,7 @@ class Book extends Base
         return $data[$status] ?? '未知';
     }
 
-    private static function extend4List(&$books) {
+    private static function extend4List(&$books, $uid=0) {
 
         $cids = array_filter(array_column($books, 'cid'));
         $cates = Category::getListByIdList($cids);
@@ -43,19 +43,23 @@ class Book extends Base
         $shelfList = BookShelf::getList([['id', 'IN', join(',', $sids)]]);
         $shelfs = array_column($shelfList, null, 'id');
 
+        $ids = array_filter(array_column($books, 'id'));
+        $subscribeStat = SubscribeRecord::getStatNumByXidListReaderUid($ids, $uid);
+
         foreach ($books as &$book) {
             $book->shelf = $shelfs[$book->sid] ?? null;
             $book->category = $cates[$book->cid] ?? null;
+            $book->subscribe = !empty($subscribeStat[$book->id]);
         }
     }
 
-    public static function getListＷithPage(&$total, $filter=[], $page=1) {
+    public static function getListＷithPage(&$total, $filter=[], $page=1, $cuid=0) {
 
         if (!($books = parent::getListＷithPage($total, $filter, $page))) {
             return $books;
         }
 
-        self::extend4List($books);
+        self::extend4List($books, $cuid);
 
         return $books;
     }

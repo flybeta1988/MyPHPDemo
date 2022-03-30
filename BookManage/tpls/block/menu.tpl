@@ -1,6 +1,7 @@
 <aside class="Hui-aside">
 	<div class="menu_dropdown bk_2">
 		<dl id="menu-product">
+			{{if $cuser|is_admin}}
 			<dt><i class="Hui-iconfont">&#xe616;</i> 图书管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
@@ -9,12 +10,30 @@
 					<li><a data-href="/book/index" data-title="图书列表" href="javascript:void(0)">图书列表</a></li>
 				</ul>
 			</dd>
+			{{else}}
+			<dt><i class="Hui-iconfont">&#xe616;</i> 图书检索<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="/book/index" data-title="我要找书" href="javascript:void(0)">我要找书</a></li>
+				</ul>
+			</dd>
+			{{/if}}
 		</dl>
+		{{if $cuser|is_admin}}
 		<dl id="menu-member">
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 读者管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a data-href="/user/index" data-title="读者列表" href="javascript:;">读者列表</a></li>
+				</ul>
+			</dd>
+		</dl>
+		{{/if}}
+		<dl id="menu-member">
+			<dt><i class="Hui-iconfont">&#xe61a;</i> 预约管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="/subscribe/index" data-title="预约记录" href="javascript:void(0)">预约记录</a></li>
 				</ul>
 			</dd>
 		</dl>

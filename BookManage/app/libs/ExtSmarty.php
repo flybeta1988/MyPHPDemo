@@ -16,6 +16,7 @@ class ExtSmarty extends \Smarty
     }
 
     private function loadMyModifiers() {
+        //$this->registerPlugin('modifier', 'isAdmin', 'is_admin');
         $this->registerPlugin('modifier', 'imageUrl', 'get_image_url');
         $this->registerPlugin('modifier', 'bookStatusMsg', 'App\Models\Book::getStatusMsg');
     }

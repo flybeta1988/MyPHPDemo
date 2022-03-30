@@ -7,12 +7,15 @@
 	<div class="page-container">
 		<div class="text-c">
 			<form method="post" action="">
-				<input type="text" name="keyword" id="" placeholder=" 产品名称" style="width:250px" class="input-text">
-				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜产品</button>
+				<input type="text" name="keyword" id="" placeholder="图书名称" style="width:250px" class="input-text">
+				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i>找书</button>
 			</form>
 		</div>
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
-			<span class="l"><a class="btn btn-primary radius" onclick="product_add('添加图书', '/book/add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加图书</a></span> <span class="r">共有数据：<strong>{{$total}}</strong> 条</span> </div>
+			{{if $cuser|is_admin}}
+			<span class="l"><a class="btn btn-primary radius" onclick="product_add('添加图书', '/book/add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加图书</a></span>
+			{{/if}}
+			<span class="r">共有数据：<strong>{{$total}}</strong> 条</span> </div>
 		<div class="mt-20">
 			<table class="table table-border table-bordered table-bg table-hover table-sort">
 				<thead>
@@ -34,7 +37,7 @@
 					<tr class="text-c va-m">
 						<td><input name="" type="checkbox" value=""></td>
 						<td>{{$book->id}}</td>
-						<td><a onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img width="60" class="product-thumb" src="{{$book->thumb|imageUrl}}"></a></td>
+						<td><a onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;"><img width="60" class="product-thumb" src="{{$book->thumb|imageUrl}}" onerror="this.src='/images/book_default.jpg'"></a></td>
 						<td class="text-l"><a style="text-decoration:none" onClick="product_show('哥本哈根橡木地板','product-show.html','10001')" href="javascript:;">{{$book->name}}</a></td>
 						<td class="text-l">{{$book->isbn}}</td>
 						<td class="text-l">{{$book->price}}</td>
@@ -60,15 +63,26 @@
 								{{$book->status|bookStatusMsg}}
 							</span>
 						</td>
+
 						<td class="td-manage">
-							{{if 0 == $book->status}}
-							<a style="text-decoration:none" onClick="product_stop(this, {{$book->id}})" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>
-							{{elseif 2 == $book->status}}
-							<a style="text-decoration:none" onClick="product_start(this, {{$book->id}})" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>
-							{{/if}}
-							<a style="text-decoration:none" class="ml-5" onClick="product_edit('产品编辑', '/book/edit', {{$book->id}})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
-							{{if 2 == $book->status}}
-							<a style="text-decoration:none" class="ml-5" onClick="product_del(this, {{$book->id}})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+							{{if $cuser|is_admin}}
+								{{if 0 == $book->status}}
+								<a style="text-decoration:none" onClick="product_stop(this, {{$book->id}})" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>
+								{{elseif 2 == $book->status}}
+								<a style="text-decoration:none" onClick="product_start(this, {{$book->id}})" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>
+								{{/if}}
+								<a style="text-decoration:none" class="ml-5" onClick="product_edit('产品编辑', '/book/edit', {{$book->id}})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
+								{{if 2 == $book->status}}
+								<a style="text-decoration:none" class="ml-5" onClick="product_del(this, {{$book->id}})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+								{{/if}}
+							{{else}}
+								{{if 1 == $book->status}}
+									{{if $book->subscribe }}
+									<a style="text-decoration:none" onClick="unsubscribe(this, {{$book->id}})" href="javascript:;" title="取消预约">取消预约</a>
+									{{else}}
+									<a style="text-decoration:none" onClick="subscribe(this, {{$book->id}})" href="javascript:;" title="预约">预约</a>
+									{{/if}}
+								{{/if}}
 							{{/if}}
 						</td>
 					</tr>
@@ -91,7 +105,7 @@ $('.table-sort').dataTable({
 	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
 	"bStateSave": true,//状态保存
 	"aoColumnDefs": [
-	  {"orderable":false,"aTargets":[0, 2, 4, 5, 6, 7, 8]}// 制定列不参与排序
+	  {"orderable":false, "aTargets":[0, 2, 4, 5, 6, 7, 8]}// 制定列不参与排序
 	]
 });
 
@@ -104,8 +118,10 @@ function product_add(title,url){
 	});
 	layer.full(index);
 }
+
 /*产品-查看*/
 function product_show(title,url,id){
+	return false;
 	var index = layer.open({
 		type: 2,
 		title: title,
@@ -113,29 +129,10 @@ function product_show(title,url,id){
 	});
 	layer.full(index);
 }
-/*产品-审核*/
-function product_shenhe(obj,id){
-	layer.confirm('审核文章？', {
-		btn: ['通过','不通过'], 
-		shade: false
-	},
-	function(){
-		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="product_start(this,id)" href="javascript:;" title="申请上线">申请上线</a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
-		$(obj).remove();
-		layer.msg('已发布', {icon:6,time:1000});
-	},
-	function(){
-		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="product_shenqing(this,id)" href="javascript:;" title="申请上线">申请上线</a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-danger radius">未通过</span>');
-		$(obj).remove();
-    	layer.msg('未通过', {icon:5,time:1000});
-	});	
-}
 
 /*产品-下架*/
-function product_stop(obj, id){
-	layer.confirm('确认要下架吗？',function(index){
+function product_stop(obj, id) {
+	layer.confirm('确认要下架吗？',function(index) {
 		$.ajax({
 			type: "POST",
 			url: "/book/status/modify",
@@ -210,6 +207,46 @@ function product_del(obj, id){
 				console.log(result.msg);
 			},
 		});		
+	});
+}
+
+//图书预约
+function subscribe(obj, id) {
+	layer.confirm('确认要预约吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '/subscribe/add',
+			dataType: 'json',
+			data: {"ajax": 1, id: id},
+			success: function(result){
+				//$(obj).parents("tr").remove();
+				layer.msg(result.msg, {icon:1, time:2000});
+				location.replace(location.href);
+			},
+			error: function(result) {
+				console.log(result.msg);
+			},
+		});
+	});
+}
+
+//取消图书预约
+function unsubscribe(obj, id) {
+	layer.confirm('确认要取消预约吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '/subscribe/delete',
+			dataType: 'json',
+			data: {"ajax": 1, book_id: id},
+			success: function(result){
+				//$(obj).parents("tr").remove();
+				layer.msg(result.msg, {icon:1, time:2000});
+				location.replace(location.href);
+			},
+			error: function(result) {
+				console.log(result.msg);
+			},
+		});
 	});
 }
 </script>

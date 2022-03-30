@@ -17,7 +17,7 @@ class BookController extends AuthController
         if ($name) {
             $filter[] = ['name', 'LIKE', $name];
         }
-        $books = Book::getListＷithPage($total, $filter, $page);
+        $books = Book::getListＷithPage($total, $filter, $page, $this->cuid);
 
         $this->smarty->assign("total", $total);
         $this->smarty->assign("books", $books);
@@ -103,7 +103,7 @@ class BookController extends AuthController
         $this->checkBookValidate($this->request, $book);
 
         if (Book::STATUS_OFF != $book->status) {
-            throw new ActionException("只有`已下架`的课程才可以删除");
+            throw new ActionException("只有`已下架`的图书才可以删除");
         }
 
         if ($book->delete()) {

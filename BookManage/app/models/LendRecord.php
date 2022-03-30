@@ -103,4 +103,14 @@ class LendRecord extends Base
         }
         return array_column($rows, 'num', $group_field);
     }
+
+    public static function getUnReturnList() {
+        $sql = sprintf(
+            "SELECT * FROM `%s` WHERE status != %d AND return_time = 0 AND end_time <= %d",
+            self::getCustomTableName(),
+            self::STATUS_RETURN,
+            time()
+        );
+        return DB::getRows($sql);
+    }
 }

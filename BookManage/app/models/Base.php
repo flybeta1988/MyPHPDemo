@@ -144,6 +144,24 @@ class Base
         return $entity;
     }
 
+    public static function toEntity($row) {
+        $entity = new static();
+        foreach ($row as $key => $value) {
+            $entity->originals[$key] = $value;
+            $entity->attributes[$key] = $value;
+        }
+        return $entity;
+    }
+
+    public static function getTotal($filter=[]) {
+        $sql = sprintf("SELECT count(1) AS num FROM `%s`", self::getTableName());
+        if (($where_str = DB::parseFilters($filter))) {
+            $sql .= ' WHERE '. $where_str;
+        }
+        $row = DB::getRow($sql);
+        return $row->num ?? 0;
+    }
+
     public static function getFirst($filter=[]) {
 
         $sql = sprintf("SELECT * FROM `%s`", self::getTableName());
@@ -172,7 +190,9 @@ class Base
         }
 
         Log::info(__METHOD__. " sql:". $sql);
-        $total = DB::getTotal($sql);
+        if (!($total = DB::getTotal($sql))) {
+            return [];
+        }
 
         $limit = DB::PAGE_SIZE;
         $offset = max(0, ($page - 1)) * $limit;
