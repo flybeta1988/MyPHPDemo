@@ -17,9 +17,9 @@
             <thead>
             <tr class="text-c">
                 <th width="40"><input name="" type="checkbox" value=""></th>
-                <th width="70">ID</th>
+                <th width="100">ID</th>
                 <th width="120">名称</th>
-                <th width="120">分类</th>
+                <th width="200">分类</th>
                 <th width="100">图书数</th>
                 <th>操作</th>
             </tr>

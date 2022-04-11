@@ -80,6 +80,10 @@ class BookController extends AuthController
         $this->smarty->display('book/add.tpl');
     }
 
+    public function add2() {
+        $this->smarty->display('book/add2.tpl');
+    }
+
     public function statusModify() {
 
         $status = $this->request->get('status');

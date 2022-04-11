@@ -11,6 +11,7 @@ class ExtSmarty extends \Smarty
         $this->compile_dir = BASE_DIR. "/tpls_c/";
         $this->left_delimiter = "{{";
         $this->right_delimiter = "}}";
+        $this->error_reporting = E_ALL & ~E_NOTICE;
 
         $this->loadMyModifiers();
     }

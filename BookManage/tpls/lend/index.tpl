@@ -128,6 +128,7 @@ function returnBook(obj, id){
 			success: function(result){
 				$(obj).parents("tr").remove();
 				layer.msg(result.msg,{icon:1, time:2000});
+				window.location.reload();
 			},
 			error: function(result) {
 				layer.msg("系統异常");

@@ -8,6 +8,7 @@ return array(
     "/phpinfo" => "GuestController@phpinfo",
 
     "/book/add" => "BookController@add",
+    "/book/add2" => "BookController@add2",
     "/book/edit" => "BookController@edit",
     "/book/delete" => "BookController@delete",
     "/book/index" => "BookController@index",

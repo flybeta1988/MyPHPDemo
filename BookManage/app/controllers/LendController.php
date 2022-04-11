@@ -47,9 +47,18 @@ class LendController extends AuthController
         $this->smarty->display('user/edit.tpl');
     }
 
+    private function checkOnSave() {
+        $reader_id = $this->request->get('reader_id');
+        if (!$reader_id) {
+            throw new ActionException("无效reader_id");
+        }
+    }
+
     private function save(LendRecord $lendRecord) {
         $book_id = $lendRecord->book_id;
         $reader_id = $this->request->get('reader_id');
+
+        $this->checkOnSave();
 
         $add = $lendRecord->id > 0 ? 0 : 1;
 
