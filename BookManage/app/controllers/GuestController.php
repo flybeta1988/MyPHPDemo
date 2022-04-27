@@ -22,7 +22,7 @@ class GuestController extends BaseController
                 Util::notice("用户名或密码不能为空");
             }
 
-            if (!($user = User::getByNamePassword($account, $password))) {
+            if (!($user = User::getByNamePassword($account, md5($password)))) {
                 Util::notice("用户名或密码错误");
             }
 

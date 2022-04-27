@@ -57,12 +57,24 @@ class UserController extends AuthController
     private function save(User $user) {
         $password = $this->request->get('password');
         $password2 = $this->request->get('password2');
+        $password_md5 = $this->request->get('password_md5');
+
         if ($password != $password2) {
             throw new ActionException("两次密码不一致");
         }
 
+        if ($user->id > 0) {
+            if ($password_md5 != $user->password) {
+                $user->password = $password_md5;
+            } else {
+                $user->password = md5($password);
+            }
+        } else {
+            $user->password = md5($password);
+        }
+
         $user->name = $this->request->get('name');
-        $user->password = $password;
+
         $user->mobile = $this->request->get('mobile');
         $user->idcard = $this->request->get('idcard');
         $user->money = $this->request->get('money');

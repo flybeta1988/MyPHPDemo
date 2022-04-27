@@ -12,6 +12,19 @@
 			</div>
 		</div>
 		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>密 码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="password" class="input-text" value="" placeholder="" id="password" name="password">
+				<input type="hidden" class="input-text" value="{{$user->password}}" placeholder="" id="password_md5" name="password_md5">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>确认密码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="password" class="input-text" value="" placeholder="" id="password2" name="password2">
+			</div>
+		</div>
+		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>手机号：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="{{$user->mobile}}" placeholder="" id="mobile" name="mobile">
@@ -44,7 +57,7 @@
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onclick="save()" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 添加 </button>
+				<button onclick="save()" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存 </button>
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
 		</div>

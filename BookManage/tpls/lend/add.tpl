@@ -87,7 +87,7 @@ function initUserList() {
 			rows = result.data
 			for(i in rows) {
 				row = rows[i]
-				_html += '<option value="'+ row.id +'">' + row.name + '</option>';
+				_html += '<option value="'+ row.id +'">' + row.name + '&nbsp;&nbsp;&nbsp;&nbsp;</option>';
 			}
 			$("#reader_id").html(_html).select2();
 		}
