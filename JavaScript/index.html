@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Test</title>
+    <script>
+      function $(id) {
+        return document.getElementById(id);
+      }
+      function init() {
+          var g = 'ggg';
+      }
+      init();
+      function hello() {
+        window.alert("操作成功");
+        $("course_name").value = 'aaabb';
+      }
+      function testFloat() {
+          var a = 0.1, b = 0.2;
+          var z = a + b;
+          console.log('a + b = ' + z)
+          if (0.3 == z) {
+              console.log('ok');
+          } else {
+              console.log('fail');
+          }
+      }
+      function tryThrow() {
+          try {
+              var a;
+              if (undefined == a) {
+                  throw "a is not defined!";
+              }
+              var r = a.b;
+              console.log(r);
+          } catch (e) {
+              console.log(e.valueOf())
+          } finally {
+              console.log('aaa')
+          }
+      }
+      console.log(g);
+    </script>
+</head>
+<body>
+<form>
+  <input type="text" id="course_name" />
+  <input type="button" onclick="testFloat()" name="testBtn" value="点击" />
+</form>
+</body>
+</html>
