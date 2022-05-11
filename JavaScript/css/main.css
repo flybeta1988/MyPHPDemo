@@ -1,1 +1,90 @@
-h1 {color: #f00;}
+* {margin: 0; padding: 0;}
+
+.warp {
+    display: inline;
+}
+
+.header {
+    background-color: #ccc;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}
+
+.topnav {
+    margin: 0 10px;
+}
+
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+    border: 1px solid #555;
+    width: 90%;
+    overflow: auto; /* 如果导航栏选项多，允许滚动 */
+}
+
+.topnav li {
+    float: left;
+    text-align: center;
+    width: 24%;
+    border-bottom: 1px solid #f00;
+    border-right: 1px solid #bbb;
+}
+
+.topnav li:last-child {
+    border-right: none;
+}
+
+.topnav li a {
+    display: block;
+    width: 100%;
+    color: #666;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+/* 鼠标移动到选项上修改背景颜色 */
+.topnav li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.topnav li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.clear {
+    clear: both;
+}
+
+.content {
+    margin: 10px;
+    background-color: #ccc;
+}
+
+.content .column {
+    float: left;
+    height: 200px;
+    margin: 0 2px;
+    text-align: center;
+    background-color: #00b7ee;
+}
+
+.content .column.side {
+    width: 25%;
+}
+
+.content .column.middle {
+    width: 49%;
+}
+
+.footer {
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #f00;
+    background-color: #f0c040;
+}
