@@ -1,8 +1,34 @@
 {
 	"name": "flybeta1988/MyPHPDemo",
+	"description": "Flybeta's test project !.",
 	"require": {
 		"monolog/monolog": "1.0.*",
-		"symfony/symfony": "3.1.*",
-		"php-amqplib/php-amqplib": "2.5.*"
+		"php-amqplib/php-amqplib": "2.5.*",
+		"elasticsearch/elasticsearch": "~5.0",
+		"swoole/ide-helper": "~4.4.7",
+		"jsonrpc/jsonrpc": "1.0.*",
+		"grpc/grpc": "~1.30.0",
+		"jukylin/jaeger-php": "dev-master",
+		"amphp/amp": "2.x-dev",
+		"amphp/http-server": "2.x-dev",
+		"phpoffice/phpword": "0.19.x-dev",
+		"apache/log4php": "dev-master"
+	},
+
+	"repositories": {
+		"packagist": {
+			"type": "composer",
+			"url": "https://mirrors.aliyun.com/composer/"
+		}
+	},
+
+	"autoload": {
+		"classmap": [
+			"OOP/"
+		]
+	},
+	"minimum-stability": "dev",
+	"require-dev": {
+		"phpunit/phpunit": "9.5.x-dev"
 	}
 }

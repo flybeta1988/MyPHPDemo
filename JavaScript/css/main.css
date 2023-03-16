@@ -1,0 +1,88 @@
+* {margin: 0; padding: 0;}
+
+.warp {
+    display: inline;
+}
+
+.header {
+    background-color: #ccc;
+    text-align: center;
+    padding: 20px;
+    margin: 5px;
+}
+
+.topnav {
+    margin: 0 5px;
+}
+
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+    border: 1px solid #555;
+    width: 99.8%;
+    overflow: auto; /* 如果导航栏选项多，允许滚动 */
+}
+
+.topnav li {
+    float: left;
+    text-align: center;
+    width: 19.92%;
+    border-right: 1px solid #bbb;
+}
+
+.topnav li:last-child {
+    border-right: none;
+}
+
+.topnav li a {
+    display: block;
+    color: #666;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+/* 鼠标移动到选项上修改背景颜色 */
+.topnav li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.topnav li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.clear {
+    clear: both;
+}
+
+.content {
+    margin: 5px;
+    background-color: #ccc;
+}
+
+.content .column {
+    float: left;
+    height: 300px;
+    margin: 0 2px;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #ccc;
+}
+
+.content .column.side {
+    width: 25%;
+}
+
+.content .column.middle {
+    width: 49%;
+}
+
+.footer {
+    margin: 5px;
+    padding: 20px;
+    text-align: center;
+    background-color: #ccc;
+}
