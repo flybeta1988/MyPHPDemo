@@ -1,5 +1,12 @@
 <?php
 
+$log = __DIR__. "/data/test.log";
+echo $log. PHP_EOL;
+$fp = fopen($log, "a");
+fwrite($fp, "aaa");
+var_dump($fp);
+die();
+
 $price = (float)'0.00';
 $r = !$price;
 

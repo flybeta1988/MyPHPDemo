@@ -7,13 +7,29 @@ namespace Composer\Autoload;
 class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
 {
     public static $files = array (
-        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'e8aa6e4b5a1db2f56ae794f1505391a8' => __DIR__ . '/..' . '/amphp/amp/lib/functions.php',
+        '76cd0796156622033397994f25b0d8fc' => __DIR__ . '/..' . '/amphp/amp/lib/Internal/functions.php',
+        '6cd5651c4fef5ed6b63e8d8b8ffbf3cc' => __DIR__ . '/..' . '/amphp/byte-stream/lib/functions.php',
+        '8dc56fe697ca93c4b40d876df1c94584' => __DIR__ . '/..' . '/amphp/process/lib/functions.php',
+        '3da389f428d8ee50333e4391c3f45046' => __DIR__ . '/..' . '/amphp/serialization/src/functions.php',
+        'bcb7d4fc55f4b1a7e10f5806723e9892' => __DIR__ . '/..' . '/amphp/sync/src/functions.php',
+        'e187e371b30897d6dc51cac6a8c94ff6' => __DIR__ . '/..' . '/amphp/sync/src/ConcurrentIterator/functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '445532134d762b3cbc25500cac266092' => __DIR__ . '/..' . '/daverandom/libdns/src/functions.php',
+        '7ebf029ad4b246f1e3f66192b40a932f' => __DIR__ . '/..' . '/amphp/dns/lib/functions.php',
+        'e1e8b49c332434256b5df11b0f0c2a62' => __DIR__ . '/..' . '/league/uri-parser/src/functions_include.php',
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
+        '3d8ee50db78074a9235f0c2008c26b42' => __DIR__ . '/..' . '/amphp/http/src/functions.php',
+        'd4e415514e4352172d58f02433fa50e4' => __DIR__ . '/..' . '/amphp/socket/src/functions.php',
+        '1c2dcb9d6851a7abaae89f9586ddd460' => __DIR__ . '/..' . '/amphp/socket/src/Internal/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '870c221a18597bfcd5ed576d0fb64a19' => __DIR__ . '/..' . '/opentracing/opentracing/src/OpenTracing/Tags.php',
         'd25d883add1ecab0d3a9ffec57f0f183' => __DIR__ . '/..' . '/opentracing/opentracing/src/OpenTracing/Formats.php',
+        '3ff3609f8c8173833eaa97521a843531' => __DIR__ . '/..' . '/amphp/http-server/src/Middleware/functions.php',
+        'a56027adf84a32da155734de2d858e65' => __DIR__ . '/..' . '/amphp/http-server/src/functions.php',
+        '146dd25cea65c6a9424749bc837cbae3' => __DIR__ . '/..' . '/amphp/http-server/src/Server.php',
         '700dcaa359912479db3776dd849a600b' => __DIR__ . '/..' . '/jukylin/jaeger-php/src/Jaeger/Constants.php',
+        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -36,13 +52,25 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
+            'PhpOffice\\PhpWord\\' => 18,
             'PhpAmqpLib\\' => 11,
         ),
         'O' => 
         array (
             'OpenTracing\\' => 12,
+        ),
+        'L' => 
+        array (
+            'LibDNS\\' => 7,
+            'League\\Uri\\' => 11,
+            'Laminas\\Escaper\\' => 16,
+        ),
+        'K' => 
+        array (
+            'Kelunik\\Certificate\\' => 20,
         ),
         'J' => 
         array (
@@ -62,6 +90,21 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         array (
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
+        ),
+        'A' => 
+        array (
+            'Amp\\WindowsRegistry\\' => 20,
+            'Amp\\Sync\\' => 9,
+            'Amp\\Socket\\' => 11,
+            'Amp\\Serialization\\' => 18,
+            'Amp\\Process\\' => 12,
+            'Amp\\Parser\\' => 11,
+            'Amp\\Http\\Server\\' => 16,
+            'Amp\\Http\\' => 9,
+            'Amp\\Dns\\' => 8,
+            'Amp\\Cache\\' => 10,
+            'Amp\\ByteStream\\' => 15,
+            'Amp\\' => 4,
         ),
     );
 
@@ -88,6 +131,10 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
@@ -96,6 +143,10 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'PhpOffice\\PhpWord\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
+        ),
         'PhpAmqpLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-amqplib/php-amqplib/PhpAmqpLib',
@@ -103,6 +154,24 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         'OpenTracing\\' => 
         array (
             0 => __DIR__ . '/..' . '/opentracing/opentracing/src/OpenTracing',
+        ),
+        'LibDNS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/daverandom/libdns/src',
+        ),
+        'League\\Uri\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/uri/src',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
+            2 => __DIR__ . '/..' . '/league/uri-parser/src',
+        ),
+        'Laminas\\Escaper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-escaper/src',
+        ),
+        'Kelunik\\Certificate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kelunik/certificate/lib',
         ),
         'Jaeger\\' => 
         array (
@@ -132,9 +201,65 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Amp\\WindowsRegistry\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/windows-registry/lib',
+        ),
+        'Amp\\Sync\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/sync/src',
+        ),
+        'Amp\\Socket\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/socket/src',
+        ),
+        'Amp\\Serialization\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/serialization/src',
+        ),
+        'Amp\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/process/lib',
+        ),
+        'Amp\\Parser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/parser/lib',
+        ),
+        'Amp\\Http\\Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/http-server/src',
+        ),
+        'Amp\\Http\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/hpack/src',
+            1 => __DIR__ . '/..' . '/amphp/http/src',
+        ),
+        'Amp\\Dns\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/dns/lib',
+        ),
+        'Amp\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/cache/lib',
+        ),
+        'Amp\\ByteStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/byte-stream/lib',
+        ),
+        'Amp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amphp/amp/lib',
+        ),
     );
 
     public static $prefixesPsr0 = array (
+        'c' => 
+        array (
+            'cash' => 
+            array (
+                0 => __DIR__ . '/..' . '/cash/lrucache/src',
+            ),
+        ),
         'T' => 
         array (
             'Thrift\\' => 
@@ -160,6 +285,91 @@ class ComposerStaticInitf2b67c62ee3f155e5c25fb88adc2719a
 
     public static $classMap = array (
         'Account' => __DIR__ . '/../..' . '/OOP/Account.php',
+        'BusinessBaseModel' => __DIR__ . '/../..' . '/OOP/BusinessBaseModel.php',
+        'Collection' => __DIR__ . '/../..' . '/OOP/Collection.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Course4Detail' => __DIR__ . '/../..' . '/OOP/Course4Detail.php',
+        'Course4List' => __DIR__ . '/../..' . '/OOP/Course4List.php',
+        'CourseBase' => __DIR__ . '/../..' . '/OOP/CourseBase.php',
+        'Logger' => __DIR__ . '/..' . '/apache/log4php/src/main/php/Logger.php',
+        'LoggerAppender' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerAppender.php',
+        'LoggerAppenderConsole' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderConsole.php',
+        'LoggerAppenderDailyFile' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderDailyFile.php',
+        'LoggerAppenderEcho' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderEcho.php',
+        'LoggerAppenderFile' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderFile.php',
+        'LoggerAppenderFirePHP' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderFirePHP.php',
+        'LoggerAppenderMail' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderMail.php',
+        'LoggerAppenderMailEvent' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderMailEvent.php',
+        'LoggerAppenderMongoDB' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderMongoDB.php',
+        'LoggerAppenderNull' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderNull.php',
+        'LoggerAppenderPDO' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderPDO.php',
+        'LoggerAppenderPhp' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderPhp.php',
+        'LoggerAppenderPool' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerAppenderPool.php',
+        'LoggerAppenderRollingFile' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderRollingFile.php',
+        'LoggerAppenderSocket' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderSocket.php',
+        'LoggerAppenderSyslog' => __DIR__ . '/..' . '/apache/log4php/src/main/php/appenders/LoggerAppenderSyslog.php',
+        'LoggerAutoloader' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerAutoloader.php',
+        'LoggerConfigurable' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerConfigurable.php',
+        'LoggerConfigurationAdapter' => __DIR__ . '/..' . '/apache/log4php/src/main/php/configurators/LoggerConfigurationAdapter.php',
+        'LoggerConfigurationAdapterINI' => __DIR__ . '/..' . '/apache/log4php/src/main/php/configurators/LoggerConfigurationAdapterINI.php',
+        'LoggerConfigurationAdapterPHP' => __DIR__ . '/..' . '/apache/log4php/src/main/php/configurators/LoggerConfigurationAdapterPHP.php',
+        'LoggerConfigurationAdapterXML' => __DIR__ . '/..' . '/apache/log4php/src/main/php/configurators/LoggerConfigurationAdapterXML.php',
+        'LoggerConfigurator' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerConfigurator.php',
+        'LoggerConfiguratorDefault' => __DIR__ . '/..' . '/apache/log4php/src/main/php/configurators/LoggerConfiguratorDefault.php',
+        'LoggerException' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerException.php',
+        'LoggerFilter' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerFilter.php',
+        'LoggerFilterDenyAll' => __DIR__ . '/..' . '/apache/log4php/src/main/php/filters/LoggerFilterDenyAll.php',
+        'LoggerFilterLevelMatch' => __DIR__ . '/..' . '/apache/log4php/src/main/php/filters/LoggerFilterLevelMatch.php',
+        'LoggerFilterLevelRange' => __DIR__ . '/..' . '/apache/log4php/src/main/php/filters/LoggerFilterLevelRange.php',
+        'LoggerFilterStringMatch' => __DIR__ . '/..' . '/apache/log4php/src/main/php/filters/LoggerFilterStringMatch.php',
+        'LoggerFormattingInfo' => __DIR__ . '/..' . '/apache/log4php/src/main/php/helpers/LoggerFormattingInfo.php',
+        'LoggerHierarchy' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerHierarchy.php',
+        'LoggerLayout' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerLayout.php',
+        'LoggerLayoutHtml' => __DIR__ . '/..' . '/apache/log4php/src/main/php/layouts/LoggerLayoutHtml.php',
+        'LoggerLayoutPattern' => __DIR__ . '/..' . '/apache/log4php/src/main/php/layouts/LoggerLayoutPattern.php',
+        'LoggerLayoutSerialized' => __DIR__ . '/..' . '/apache/log4php/src/main/php/layouts/LoggerLayoutSerialized.php',
+        'LoggerLayoutSimple' => __DIR__ . '/..' . '/apache/log4php/src/main/php/layouts/LoggerLayoutSimple.php',
+        'LoggerLayoutTTCC' => __DIR__ . '/..' . '/apache/log4php/src/main/php/layouts/LoggerLayoutTTCC.php',
+        'LoggerLayoutXml' => __DIR__ . '/..' . '/apache/log4php/src/main/php/layouts/LoggerLayoutXml.php',
+        'LoggerLevel' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerLevel.php',
+        'LoggerLocationInfo' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerLocationInfo.php',
+        'LoggerLoggingEvent' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerLoggingEvent.php',
+        'LoggerMDC' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerMDC.php',
+        'LoggerNDC' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerNDC.php',
+        'LoggerOptionConverter' => __DIR__ . '/..' . '/apache/log4php/src/main/php/helpers/LoggerOptionConverter.php',
+        'LoggerPatternConverter' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverter.php',
+        'LoggerPatternConverterClass' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterClass.php',
+        'LoggerPatternConverterCookie' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterCookie.php',
+        'LoggerPatternConverterDate' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterDate.php',
+        'LoggerPatternConverterEnvironment' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterEnvironment.php',
+        'LoggerPatternConverterFile' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterFile.php',
+        'LoggerPatternConverterLevel' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterLevel.php',
+        'LoggerPatternConverterLine' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterLine.php',
+        'LoggerPatternConverterLiteral' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterLiteral.php',
+        'LoggerPatternConverterLocation' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterLocation.php',
+        'LoggerPatternConverterLogger' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterLogger.php',
+        'LoggerPatternConverterMDC' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterMDC.php',
+        'LoggerPatternConverterMessage' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterMessage.php',
+        'LoggerPatternConverterMethod' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterMethod.php',
+        'LoggerPatternConverterNDC' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterNDC.php',
+        'LoggerPatternConverterNewLine' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterNewLine.php',
+        'LoggerPatternConverterProcess' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterProcess.php',
+        'LoggerPatternConverterRelative' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterRelative.php',
+        'LoggerPatternConverterRequest' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterRequest.php',
+        'LoggerPatternConverterServer' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterServer.php',
+        'LoggerPatternConverterSession' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterSession.php',
+        'LoggerPatternConverterSessionID' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterSessionID.php',
+        'LoggerPatternConverterSuperglobal' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterSuperglobal.php',
+        'LoggerPatternConverterThrowable' => __DIR__ . '/..' . '/apache/log4php/src/main/php/pattern/LoggerPatternConverterThrowable.php',
+        'LoggerPatternParser' => __DIR__ . '/..' . '/apache/log4php/src/main/php/helpers/LoggerPatternParser.php',
+        'LoggerReflectionUtils' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerReflectionUtils.php',
+        'LoggerRenderer' => __DIR__ . '/..' . '/apache/log4php/src/main/php/renderers/LoggerRenderer.php',
+        'LoggerRendererDefault' => __DIR__ . '/..' . '/apache/log4php/src/main/php/renderers/LoggerRendererDefault.php',
+        'LoggerRendererException' => __DIR__ . '/..' . '/apache/log4php/src/main/php/renderers/LoggerRendererException.php',
+        'LoggerRendererMap' => __DIR__ . '/..' . '/apache/log4php/src/main/php/renderers/LoggerRendererMap.php',
+        'LoggerRoot' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerRoot.php',
+        'LoggerThrowableInformation' => __DIR__ . '/..' . '/apache/log4php/src/main/php/LoggerThrowableInformation.php',
+        'LoggerUtils' => __DIR__ . '/..' . '/apache/log4php/src/main/php/helpers/LoggerUtils.php',
         'OOP\\Animal' => __DIR__ . '/../..' . '/OOP/Animal.php',
         'OrgCourseMiddle' => __DIR__ . '/../..' . '/OOP/OrgCourseMiddle.php',
         'Owner' => __DIR__ . '/../..' . '/OOP/Owner.php',

@@ -9,7 +9,11 @@
 		"swoole/ide-helper": "~4.4.7",
 		"jsonrpc/jsonrpc": "1.0.*",
 		"grpc/grpc": "~1.30.0",
-		"jukylin/jaeger-php": "dev-master"
+		"jukylin/jaeger-php": "dev-master",
+		"amphp/amp": "2.x-dev",
+		"amphp/http-server": "2.x-dev",
+		"phpoffice/phpword": "0.19.x-dev",
+		"apache/log4php": "dev-master"
 	},
 
 	"repositories": {

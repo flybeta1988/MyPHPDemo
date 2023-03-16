@@ -11,7 +11,7 @@ class DB
     public static function getInstance() {
 
         if (!is_null(self::$instance)) {
-            return self::$instance;
+            //return self::$instance;
         }
 
         $host = $config['host'] ?? "127.0.0.1";
@@ -19,7 +19,7 @@ class DB
         $dbname = $config['dbname'] ?? "test";
         $dsn = sprintf("mysql:host=%s;port=%d;dbname=%s", $host, $port, $dbname);
 
-        $pdo = new PDO($dsn, 'root', 'root');
+        $pdo = new PDO($dsn, 'root', '123456');
         if (is_null($pdo)) {
             throw new Exception("init db instance fail!");
         }
@@ -41,7 +41,7 @@ class DB
 
     public function getRow(string $sql) {
         $stmt = self::getInstance()->query($sql);
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $stmt ? $stmt->fetch(PDO::FETCH_OBJ) : [];
     }
 
     public function getRows(string $sql) :array

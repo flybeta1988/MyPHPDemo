@@ -34,8 +34,9 @@ class MyIterator implements Iterator
 
     public function valid()
     {
-        $var = $this->current() !== false;
-        echo __METHOD__. ": {$var}\n";
+        echo __METHOD__. " start...\n";
+        $var = (int)($this->current() !== false);
+        echo __METHOD__. " end, result:{$var}\n";
         return $var;
     }
 
@@ -44,5 +45,4 @@ class MyIterator implements Iterator
         echo __METHOD__. "\n";
         reset($this->var);
     }
-
 }

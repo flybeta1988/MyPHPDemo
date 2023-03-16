@@ -30,4 +30,24 @@ abstract class BusinessBaseModel
         }
         return $rows;
     }
+
+    public static function varsToArray($obj) {
+        return self::processArray2(get_object_vars($obj));
+    }
+
+    private static function processArray2($array) {
+        $rows = [];
+        foreach($array as $key => $value) {
+            $key = Util::uncamelize($key);
+            if (is_object($value)) {
+                $rows[$key] = self::varsToArray($value);
+            }
+            if (is_array($value)) {
+                $rows[$key] = self::processArray2($value);
+            }
+            $rows[$key] = $value;
+            unset($array[$key]);
+        }
+        return $rows;
+    }
 }

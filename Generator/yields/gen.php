@@ -1,26 +1,20 @@
 <?php
 function gen() {
-    $ret = yield 'yield01';
+    $ret = yield 'yield1';
     var_dump($ret);
 
-    $ret = yield 'yield02';
+    $ret = yield 'yield2';
     var_dump($ret);
 
-    $ret = yield 'yield03';
-    var_dump($ret);
-
-    $ret = yield 'yield04';
-    var_dump($ret);
+    $a = new SplQueue();
 }
 
 $gen = gen();
 var_dump($gen->current());
-var_dump($gen->send('ret1'));
+$result = $gen->send('ret1');
+var_dump($result);
 
-echo "\n";
+echo "===============>\n";
 var_dump($gen->current());
-var_dump($gen->send('ret2'));
-
-echo "\n";
-var_dump($gen->current());
-var_dump($gen->send('ret3'));
+$result2 = $gen->send('ret2');
+var_dump($result2);

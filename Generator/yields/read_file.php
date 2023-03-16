@@ -5,7 +5,7 @@ function getLines($file) {
         while ($line = fgets($f)) {
             echo microtime(1). " ".__METHOD__. " -> get line\n";
             yield $line;
-            sleep(1);
+            sleep(2);
         }
     } finally {
         fclose($f);
@@ -15,6 +15,6 @@ function getLines($file) {
 $lines = getLines("chars.txt");
 var_dump($lines);
 
-foreach ($lines as $n => $line) {
-    echo $n. ':'. $line;
+foreach ($lines as $key => $line) {
+    echo $key. ':'. $line. "\n";
 }

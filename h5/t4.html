@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试环境管理平台</title>
+  <style>
+    body, div {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      height: 100vh;
+      grid-template: auto 1fr auto / 1fr auto
+    }
+
+    header {
+      background: lightpink;
+      padding: 2rem;
+      grid-column: 1 / 4;
+      height: 30px;
+    }
+
+    main {
+      background: coral;
+      grid-column: 1 / 2;
+    }
+
+    .right-sidebar {
+      background: yellow;
+      grid-column: 2 / 3;
+      width: 600px;
+    }
+
+    footer {
+      background: wheat;
+      padding: 2rem;
+      text-align: center;
+      grid-column: 1 / 4;
+      height: 30px;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+    }
+
+    .right-sidebar {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 contenteditable>Header.com</h1>
+</header>
+<main></main>
+<div class="right-sidebar" contenteditable>
+  Right Sidebar Right Sidebar Right Sidebar Right Sidebar
+</div>
+<footer contenteditable>
+  Footer Content — Header.com 2020
+</footer>
+</body>
+</html>

@@ -1,23 +1,12 @@
 <?php
 include_once "DB.php";
 
-$loop = 100;
-$db = new DB();
+$loop = 200;
 
 for ($i = 0; $i < $loop; $i ++) {
-    $row = $db->getRow("select * from org_course where id = 1");
-    if (!$row) {
-        continue;
-    }
-
-    $num = intval($row->num);
-    if ($num > 0) {
-        $num --;
-        $sql = sprintf("UPDATE `org_course` SET `num` = %d WHERE id = %d", $num, 1);
-        if ($db->exec($sql)) {
-            echo "[ok] ". $sql. "\n";
-        }
-    }
+    $db = new DB();
+    var_dump($db);
+    $row = $db->getRow("select * from `user` where id = 1");
 }
 echo "finished!\n";
 

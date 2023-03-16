@@ -3,6 +3,8 @@ include_once "./BusinessBaseModel.php";
 
 class CourseBase extends BusinessBaseModel
 {
+    private $org;
+
     protected $id = 0;
     protected $name = '';
     protected $status = 0;

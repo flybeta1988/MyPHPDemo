@@ -1,11 +1,20 @@
 <?php
 class Course4List extends CourseBase
 {
+    private $pri = 0;
+
+    public $pub = 0;
+
     protected $grouping;
 
     protected $buy_status = 0;
 
     protected $learnStatus = 0;
+
+    public function __construct()
+    {
+
+    }
 
     /**
      * @return mixed

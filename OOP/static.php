@@ -34,9 +34,16 @@ function test3($i) {
     return $ids;
 }
 
+echo "result:".test2(1);
+echo PHP_EOL;
+echo "result:".test2(2);
+echo PHP_EOL;
+echo "result:".test2(2);
+
 for ($i = 0; $i < 5; $i++) {
     //test1();
-    test2($i);
-    test2($i);
+    //test2($i);
+    //test2($i);
+    //test3($i);
     //test3($i);
 }
